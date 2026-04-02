@@ -1,0 +1,10 @@
+package viewmodel;
+import model.ProductModel;
+
+public class WarehouseListViewModel {
+  private ProductModel model;
+
+  public WarehouseListViewModel(ProductModel model){
+    this.model = model;
+  }
+}
