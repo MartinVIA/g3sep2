@@ -8,4 +8,7 @@ public class StoreViewModel {
   public StoreViewModel(ProductModel model){
     this.model = model;
   }
+  public ProductModel getModel() {
+    return model;
+  }
 }

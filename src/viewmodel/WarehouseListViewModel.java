@@ -1,4 +1,5 @@
 package viewmodel;
+
 import model.ProductModel;
 
 public class WarehouseListViewModel {
@@ -6,5 +7,8 @@ public class WarehouseListViewModel {
 
   public WarehouseListViewModel(ProductModel model){
     this.model = model;
+  }
+  public ProductModel getModel() {
+    return model;
   }
 }
