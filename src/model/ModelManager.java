@@ -13,6 +13,16 @@ public class ModelManager implements ProductModel {
     warehouseList.addProduct();
   }
 
+  @Override public void addProduct(String name, String description,
+      int quantity, boolean availability)
+  {
+
+  }
+
+  @Override public Product getProduct(int index)
+  {
+    return null;
+  }
 
   public ObservableList<Product> getStoreList() {
     return storeList.getProductList();
