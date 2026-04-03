@@ -6,15 +6,17 @@ public class Product {
 
   private String name;
   private String description;
+  private int price;
   private int quantity;
-  private boolean availability;
+  private boolean perishable;
   private final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
-  public Product ( String name, String description, int quantity, boolean availability ){
+  public Product ( String name, String description,int price, int quantity, boolean perishable){
     this.name = name;
     this.description = description;
+    this.price = price;
     this.quantity = quantity;
-    this.availability = false;
+    this.perishable = false;
   }
 
   public String getName()
@@ -32,9 +34,15 @@ public class Product {
     return description;
   }
 
-  public void setDescription(String description)
-  {
+  public void setDescription(String description) {
     this.description = description;
+  }
+
+  public int getPrice() {
+    return price;
+  }
+  public void setPrice(int price){
+    this.price = price;
   }
 
   public int getQuantity()
@@ -47,13 +55,12 @@ public class Product {
     this.quantity = quantity;
   }
 
-  public boolean isAvailability()
+  public boolean isPerishable()
   {
-    return availability;
+    return perishable;
   }
 
-  public void setAvailability(boolean availability)
-  {
-    this.availability = availability;
+  public void setPerishable(boolean perishable) {
+    this.perishable = perishable;
   }
 }

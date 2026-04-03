@@ -14,6 +14,7 @@ import viewmodel.WarehouseViewModel;
 public class WarehouseViewController {
   @FXML private TableView<Product> productTable;
   @FXML private TableColumn<Product, String> name;
+  @FXML private TableColumn<Product, String> description;
   @FXML private TableColumn<Product, Integer> price;
   @FXML private TableColumn<Product, Integer> quantity;
   @FXML private TableColumn<Product, Boolean> perishableness;
@@ -25,10 +26,11 @@ public class WarehouseViewController {
     this.model = model;
     this.root = root;
     name.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getName()));
-    price.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getPrice()));
-    quantity.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getQuantity()));
+    description.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getDescription()));
+    price.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getPrice()).asObject());
+    quantity.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getQuantity()).asObject());
     perishableness.setCellValueFactory(cell -> new SimpleBooleanProperty(cell.getValue().isPerishable()));
-    productTable.setItems(model.getModel().getWarehouseList());
+    productTable.setItems(model.getModel().getWarehouseList().getProductList());
   }
 
   public Region getRoot() {

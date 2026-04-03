@@ -1,29 +1,25 @@
 package model;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class StoreList implements ProductModel{
+public class StoreList implements ProductList {
 
   private ObservableList<Product> storeList;
 
-  @Override public void addProduct(String name, String description,
-      int quantity, boolean availability)
-  {
-
+  public StoreList(){
+    storeList = FXCollections.observableArrayList();
   }
 
-  @Override public Product getProduct(int index)
+   public void addProduct(String name, String description,int price, int quantity, boolean perishable) {
+     storeList.add(new Product(name,description,price,quantity,perishable));
+  }
+  public Product getProduct(int index) {
+    return storeList.get(index);
+  }
+  public ObservableList<Product> getProductList()
   {
-    return null;
+    return storeList;
   }
 
-  @Override public ObservableList<Product> getStoreList()
-  {
-    return null;
-  }
-
-  @Override public ObservableList<Product> getWarehouseList()
-  {
-    return null;
-  }
 }
