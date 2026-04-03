@@ -1,8 +1,21 @@
 package main;
 
-class Main {
-  public static void main(String[] args){
+import javafx.application.Application;
+import javafx.stage.Stage;
+import view.ViewHandler;
 
+import java.io.IOException;
+
+public class Main extends Application
+{
+  public static void main(String[] args){
+    launch(args);
   System.out.println("heehee :3c");
+  }
+
+  @Override public void start(Stage primaryStage) throws IOException
+  {
+    ViewHandler viewHandler = new ViewHandler();
+    viewHandler.start(new Stage());
   }
 }
