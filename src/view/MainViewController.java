@@ -21,10 +21,10 @@ public class MainViewController {
   }
 
   public void handleWarehouseButton(){
-
+    viewHandler.openView("warehouseView");
   }
 
   public void handleStoreButton(){
-
+    viewHandler.openView("storeView");
   }
 }

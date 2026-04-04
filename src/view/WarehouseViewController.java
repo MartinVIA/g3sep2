@@ -2,9 +2,9 @@ package view;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Region;
@@ -18,6 +18,7 @@ public class WarehouseViewController {
   @FXML private TableColumn<Product, Integer> price;
   @FXML private TableColumn<Product, Integer> quantity;
   @FXML private TableColumn<Product, Boolean> perishableness;
+  @FXML private Button orderButton;
   private ViewHandler viewHandler;
   private Region root;
   private WarehouseViewModel model;
@@ -31,6 +32,10 @@ public class WarehouseViewController {
     quantity.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getQuantity()).asObject());
     perishableness.setCellValueFactory(cell -> new SimpleBooleanProperty(cell.getValue().isPerishable()));
     productTable.setItems(model.getModel().getWarehouseList().getProductList());
+  }
+  @FXML
+  public void initialize(){
+    //Leave it blank, it doesn't depend on any other injected data
   }
 
   public Region getRoot() {

@@ -32,7 +32,10 @@ public class ViewHandler {
         root = loadMainView("/view/MainView.fxml");
         break;
       case "warehouseView":
-        root = loadWarehouseView("/view/EditVinylView.fxml");
+        root = loadWarehouseView("/view/WarehouseView.fxml");
+        break;
+      case "storeView":
+        root = loadStoreView("/view/StoreView.fxml");
         break;
     }
     currentScene.setRoot(root);
@@ -42,6 +45,7 @@ public class ViewHandler {
     primaryStage.setHeight(root.getPrefHeight());
     primaryStage.show();
   }
+
   private Region loadMainView(String fxml) {
     Region root;
     if (mainVC == null) {
@@ -60,6 +64,7 @@ public class ViewHandler {
     }
     return mainVC.getRoot();
   }
+
   private Region loadWarehouseView(String fxml) {
     Region root;
     if (warehouseVC == null) {
@@ -77,6 +82,26 @@ public class ViewHandler {
       warehouseVC.reset();
     }
     return warehouseVC.getRoot();
+  }
+
+  private Region loadStoreView(String fxml)
+  {
+    Region root;
+    if (storeVC == null) {
+      try {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(fxml));
+        root = loader.load();
+        storeVC = loader.getController();
+        storeVC.init(this,viewModelFactory.getStoreVM(),root);
+      }
+      catch(Exception e) {
+        e.printStackTrace();
+      }
+    }else {
+      storeVC.reset();
+    }
+    return storeVC.getRoot();
   }
 
 

@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="view.WarehouseViewController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.WarehouseViewController">
+   <children>
+      <TableView fx:id="productTable" layoutX="25.0" layoutY="50.0" prefHeight="325.0" prefWidth="550.0">
+        <columns>
+          <TableColumn fx:id="name" prefWidth="135.40000915527344" text="Name" />
+          <TableColumn fx:id="description" prefWidth="189.60000610351562" text="Description" />
+            <TableColumn fx:id="price" prefWidth="65.39996337890625" text="Price" />
+            <TableColumn fx:id="quantity" prefWidth="75.79998779296875" text="Quantity" />
+            <TableColumn fx:id="perishableness" prefWidth="89.0" text="Perishable" />
+        </columns>
+      </TableView>
+      <Button fx:id="orderButton" layoutX="492.0" layoutY="14.0" mnemonicParsing="false" text="Order Stock" />
+   </children>
 </AnchorPane>
