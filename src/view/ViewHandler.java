@@ -27,6 +27,7 @@ public class ViewHandler {
   }
   public void openView(String id){
     Region root = null;
+    // pretty sure something here said it cant be null but im dumm idk what to put here but probs why it no work
     switch(id) {
       case "mainView":
         root = loadMainView("/view/MainView.fxml");

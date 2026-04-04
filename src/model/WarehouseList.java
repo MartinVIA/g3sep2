@@ -14,6 +14,9 @@ public class WarehouseList implements ProductList {
   public void addProduct(String name, String description, int price, int quantity, boolean perishable) {
     warehouseList.add(new Product(name,description,price,quantity,perishable));
   }
+  public void discardProduct(int index){
+    warehouseList.remove(index);
+  }
   public Product getProduct(int index) {
     return warehouseList.get(index);
   }
