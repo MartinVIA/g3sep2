@@ -11,10 +11,13 @@ public class StoreList implements ProductList {
     storeList = FXCollections.observableArrayList();
   }
 
-   public void addProduct(String name, String description,int price, int quantity, boolean perishable) {
-     storeList.add(new Product(name,description,price,quantity,perishable));
+   public void addProduct(int PID, String name, String description,int price, int quantity, boolean perishable) {
+     storeList.add(new Product(PID,name,description,price,quantity,perishable));
   }
 
+  public void orderProduct(int PID,int quantity){
+
+  }
   public void discardProduct(int index){
     storeList.remove(index);
   }

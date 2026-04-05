@@ -1,8 +1,7 @@
 package model;
 
-import javafx.collections.ObservableList;
-
 public interface ProductModel {
+  ProductList getProductsList();
   ProductList getStoreList();
   ProductList getWarehouseList();
 }
