@@ -42,6 +42,8 @@ public class WarehouseViewController {
     return root;
   }
 
-  public void reset() {
+  public void refresh()
+  {
+    model.reload();
   }
 }

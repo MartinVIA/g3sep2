@@ -10,15 +10,15 @@ public class MainViewController {
   private Region root;
   @FXML private Button warehouseButton;
   @FXML private Button storeButton;
-  public void init(ViewHandler viewHandler, MainViewModel mainVM, Region root) {
-
+  private MainViewModel model;
+  public void init(ViewHandler viewHandler, MainViewModel model, Region root) {
+    this.viewHandler = viewHandler;
+    this.model = model;
+    this.root = root;
   }
 
   public Region getRoot() {
     return root;
-  }
-
-  public void reset() {
   }
 
   public void handleWarehouseButton(){
@@ -27,5 +27,10 @@ public class MainViewController {
 
   public void handleStoreButton(){
     viewHandler.openView("storeView");
+  }
+
+  public void reset()
+  {
+    root = null;
   }
 }

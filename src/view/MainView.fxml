@@ -11,7 +11,7 @@
             <Font size="26.0" />
          </font>
       </Label>
-      <Button fx:id="warehouseButton" layoutX="72.0" layoutY="146.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Warehouse" />
-      <Button fx:id="storeButton" layoutX="328.0" layoutY="146.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Store" />
+      <Button fx:id="warehouseButton" layoutX="72.0" layoutY="146.0" mnemonicParsing="false" onAction="#handleWarehouseButton" prefHeight="200.0" prefWidth="200.0" text="Warehouse" />
+      <Button fx:id="storeButton" layoutX="328.0" layoutY="146.0" mnemonicParsing="false" onAction="#handleStoreButton" prefHeight="200.0" prefWidth="200.0" text="Store" />
    </children>
 </AnchorPane>

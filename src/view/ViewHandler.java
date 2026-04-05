@@ -40,7 +40,7 @@ public class ViewHandler {
         break;
     }
     currentScene.setRoot(root);
-    primaryStage.setTitle("Vinyl manager thingy");
+    primaryStage.setTitle("Warehouse management system");
     primaryStage.setScene(currentScene);
     primaryStage.setWidth(root.getPrefWidth());
     primaryStage.setHeight(root.getPrefHeight());
@@ -80,7 +80,7 @@ public class ViewHandler {
         e.printStackTrace();
       }
     }else {
-      warehouseVC.reset();
+      warehouseVC.refresh();
     }
     return warehouseVC.getRoot();
   }
@@ -100,7 +100,7 @@ public class ViewHandler {
         e.printStackTrace();
       }
     }else {
-      storeVC.reset();
+      storeVC.refresh();
     }
     return storeVC.getRoot();
   }
