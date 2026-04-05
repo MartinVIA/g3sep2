@@ -1,5 +1,6 @@
 package view;
 
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Region;
 import viewmodel.MainViewModel;
@@ -7,8 +8,8 @@ import viewmodel.MainViewModel;
 public class MainViewController {
   private ViewHandler viewHandler;
   private Region root;
-  private Button warehouseButton;
-  private Button storeButton;
+  @FXML private Button warehouseButton;
+  @FXML private Button storeButton;
   public void init(ViewHandler viewHandler, MainViewModel mainVM, Region root) {
 
   }
