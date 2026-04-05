@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainViewController">
+<AnchorPane prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainViewController">
    <children>
-      <Label layoutX="172.0" layoutY="61.0" text="Choose interface type:" textFill="#281d9e">
+      <Label layoutX="172.0" layoutY="60.0" text="Choose interface type:" textFill="#281d9e">
          <font>
             <Font size="26.0" />
          </font>

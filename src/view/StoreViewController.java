@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Region;
@@ -17,6 +18,7 @@ public class StoreViewController {
   @FXML private TableColumn<Product, Integer> price;
   @FXML private TableColumn<Product, Integer> quantity;
   @FXML private TableColumn<Product, Boolean> perishableness;
+  @FXML private Button warehouseButton;
   private ViewHandler viewHandler;
   private Region root;
   private StoreViewModel model;
@@ -47,5 +49,9 @@ public class StoreViewController {
   public void refresh()
   {
     model.reload();
+  }
+
+  public void handleWarehouseButton(){
+    viewHandler.openView("warehouseListView");
   }
 }

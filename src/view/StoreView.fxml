@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.StoreViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.StoreViewController">
    <children>
       <TableView fx:id="productTable" layoutX="25.0" layoutY="53.0" prefHeight="325.0" prefWidth="550.0">
         <columns>
@@ -14,5 +14,6 @@
             <TableColumn fx:id="perishableness" prefWidth="73.60001220703123" text="Perishable" />
         </columns>
       </TableView>
+      <Button fx:id="warehouseButton" layoutX="41.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleWarehouseButton" text="View Warehouse Inventory" />
    </children>
 </AnchorPane>

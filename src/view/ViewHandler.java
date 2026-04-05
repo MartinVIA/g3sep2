@@ -38,6 +38,9 @@ public class ViewHandler {
       case "storeView":
         root = loadStoreView("/view/StoreView.fxml");
         break;
+      case "warehouseListView":
+        root = loadWarehouseListView("/view/WarehouseListView.fxml");
+        break;
     }
     currentScene.setRoot(root);
     primaryStage.setTitle("Warehouse management system");
@@ -105,5 +108,24 @@ public class ViewHandler {
     return storeVC.getRoot();
   }
 
+  private Region loadWarehouseListView(String fxml)
+  {
+    Region root;
+    if (warehouseListVC == null) {
+      try {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(fxml));
+        root = loader.load();
+        warehouseListVC = loader.getController();
+        warehouseListVC.init(this,viewModelFactory.getWarehouseListVM(),root);
+      }
+      catch(Exception e) {
+        e.printStackTrace();
+      }
+    }else {
+      warehouseListVC.refresh();
+    }
+    return warehouseListVC.getRoot();
+  }
 
 }
