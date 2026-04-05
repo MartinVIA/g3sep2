@@ -7,11 +7,11 @@
    <children>
       <TableView fx:id="productTable" layoutX="25.0" layoutY="50.0" prefHeight="325.0" prefWidth="550.0">
         <columns>
-          <TableColumn fx:id="name" prefWidth="135.40000915527344" text="Name" />
-          <TableColumn fx:id="description" prefWidth="189.60000610351562" text="Description" />
-            <TableColumn fx:id="price" prefWidth="65.39996337890625" text="Price" />
-            <TableColumn fx:id="quantity" prefWidth="75.79998779296875" text="Quantity" />
-            <TableColumn fx:id="perishableness" prefWidth="89.0" text="Perishable" />
+          <TableColumn fx:id="name" prefWidth="135.0" text="Name" />
+          <TableColumn fx:id="description" prefWidth="190.0" text="Description" />
+            <TableColumn fx:id="price" prefWidth="75.0" text="Price" />
+            <TableColumn fx:id="quantity" prefWidth="75.0" text="Quantity" />
+            <TableColumn fx:id="perishableness" prefWidth="73.60001220703123" text="Perishable" />
         </columns>
       </TableView>
       <Button fx:id="orderButton" layoutX="492.0" layoutY="14.0" mnemonicParsing="false" text="Order Stock" />
