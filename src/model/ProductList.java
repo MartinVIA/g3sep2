@@ -1,6 +1,7 @@
 package model;
 
 import javafx.collections.ObservableList;
+import viewmodel.WarehouseViewModel;
 
 public interface ProductList {
   ObservableList<Product> getProductList();
