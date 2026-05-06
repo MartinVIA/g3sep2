@@ -1,42 +1,21 @@
 package viewmodel;
 
-import javafx.beans.property.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import model.Product;
 import model.ProductModel;
-
+import model.WarehouseList;
 
 public class WarehouseViewModel {
   private ProductModel model;
-  private ObservableList<ProductViewModel> warehouseList;
+  private WarehouseList warehouseList;
 
-  public WarehouseViewModel(ProductModel model)
-  {
+  public WarehouseViewModel(ProductModel model){
     this.model = model;
-    warehouseList = FXCollections.observableArrayList();
-    for (Product product : model.getWarehouseList().getProductList())
-    {
-      warehouseList.add(new ProductViewModel(product));
-    }
   }
-
   public ProductModel getModel() {
     return model;
   }
 
   public void reload()
   {
-    warehouseList.clear();
-    warehouseList = FXCollections.observableArrayList();
-    for (Product product : model.getWarehouseList().getProductList())
-    {
-      warehouseList.add(new ProductViewModel(product));
-    }
-  }
-
-  public ObservableList<ProductViewModel> getWarehouseList()
-  {
-    return warehouseList;
+    warehouseList.getProductList();
   }
 }
