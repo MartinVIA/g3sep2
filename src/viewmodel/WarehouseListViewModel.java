@@ -1,14 +1,22 @@
 package viewmodel;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import model.Product;
 import model.ProductModel;
-import model.WarehouseList;
+
 
 public class WarehouseListViewModel {
   private ProductModel model;
-  private WarehouseList warehouseList;
+  private ObservableList<ProductViewModel> warehouseList;
 
   public WarehouseListViewModel(ProductModel model){
     this.model = model;
+    warehouseList = FXCollections.observableArrayList();
+    for (Product product : model.getWarehouseList().getProductList())
+    {
+      warehouseList.add(new ProductViewModel(product));
+    }
   }
   public ProductModel getModel() {
     return model;
@@ -16,6 +24,17 @@ public class WarehouseListViewModel {
 
   public void reload()
   {
-    warehouseList.getProductList();
+    warehouseList.clear();
+    warehouseList = FXCollections.observableArrayList();
+    for (Product product : model.getWarehouseList().getProductList())
+    {
+      warehouseList.add(new ProductViewModel(product));
+    }
   }
+
+  public ObservableList<ProductViewModel> getWarehouseList()
+  {
+    return warehouseList;
+  }
+
 }

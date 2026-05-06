@@ -8,16 +8,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Region;
-import model.Product;
+import viewmodel.ProductViewModel;
 import viewmodel.StoreViewModel;
 
 public class StoreViewController {
-  @FXML private TableView<Product> productTable;
-  @FXML private TableColumn<Product, String> name;
-  @FXML private TableColumn<Product, String> description;
-  @FXML private TableColumn<Product, Integer> price;
-  @FXML private TableColumn<Product, Integer> quantity;
-  @FXML private TableColumn<Product, Boolean> perishableness;
+  @FXML private TableView<ProductViewModel> productTable;
+  @FXML private TableColumn<ProductViewModel, String> name;
+  @FXML private TableColumn<ProductViewModel, String> description;
+  @FXML private TableColumn<ProductViewModel, Integer> price;
+  @FXML private TableColumn<ProductViewModel, Integer> quantity;
+  @FXML private TableColumn<ProductViewModel, Boolean> perishableness;
   @FXML private Button warehouseButton;
   private ViewHandler viewHandler;
   private Region root;
@@ -32,12 +32,12 @@ public class StoreViewController {
     this.viewHandler = viewHandler;
     this.model = model;
     this.root = root;
-    name.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getName()));
-    description.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getDescription()));
-    price.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getPrice()).asObject());
-    quantity.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getQuantity()).asObject());
-    perishableness.setCellValueFactory(cell -> new SimpleBooleanProperty(cell.getValue().isPerishable()));
-    productTable.setItems(model.getModel().getStoreList().getProductList());
+    name.setCellValueFactory(cell -> cell.getValue().nameProperty());
+    description.setCellValueFactory(cell -> cell.getValue().descriptionProperty());
+    price.setCellValueFactory(cell -> cell.getValue().priceProperty().asObject());
+    quantity.setCellValueFactory(cell -> cell.getValue().quantityProperty().asObject());
+    perishableness.setCellValueFactory(cell -> cell.getValue().isPerishableProperty());
+    productTable.setItems(model.getStoreList());
 
   }
 
