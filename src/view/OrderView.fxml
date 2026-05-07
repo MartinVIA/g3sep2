@@ -1,14 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="view.OrderViewController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.OrderViewController">
+    <HBox layoutX="75.0" layoutY="28.0" prefHeight="203.0" prefWidth="257.0">
+        <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
+            <HBox.margin>
+                <Insets left="20.0" />
+            </HBox.margin>
+            <Label text="Order Stock">
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin>
+            </Label>
+            <TextField alignment="TOP_LEFT">
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+            </TextField>
+        </VBox>
+        <VBox prefHeight="200.0" prefWidth="100.0">
+            <HBox.margin>
+                <Insets left="20.0" />
+            </HBox.margin>
+            <Label prefHeight="18.0" prefWidth="205.0" text="Name">
+                <padding>
+                    <Insets left="35.0" />
+                </padding>
+            </Label>
+            <TextField editable="false" />
+            <Label prefHeight="18.0" prefWidth="105.0" text="Description">
+                <padding>
+                    <Insets left="20.0" />
+                </padding>
+            </Label>
+            <TextField editable="false" />
+            <Label prefHeight="18.0" prefWidth="102.0" text="Price">
+                <padding>
+                    <Insets left="35.0" />
+                </padding>
+            </Label>
+            <TextField editable="false" />
+            <Label prefHeight="18.0" prefWidth="166.0" text="Perishableness">
+                <padding>
+                    <Insets left="10.0" />
+                </padding>
+            </Label>
+            <TextField editable="false" />
+            <Label alignment="CENTER" prefHeight="18.0" prefWidth="125.0" text="Current Quantity" />
+            <TextField editable="false" />
+        </VBox>
+    </HBox>
+    <HBox layoutX="97.0" layoutY="270.0" prefHeight="100.0" prefWidth="213.0">
+        <Button fx:id="confirmButton" mnemonicParsing="false" onAction="#handleConfirm" text="Confirm Order" />
+        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancel" text="Cancel Order" textFill="RED">
+            <HBox.margin>
+                <Insets left="30.0" />
+            </HBox.margin>
+        </Button>
+    </HBox>
 </AnchorPane>

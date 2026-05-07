@@ -27,7 +27,6 @@ public class ViewHandler {
   }
   public void openView(String id){
     Region root = null;
-    // pretty sure something here said it cant be null but im dumm idk what to put here but probs why it no work
     switch(id) {
       case "mainView":
         root = loadMainView("/view/MainView.fxml");
@@ -41,6 +40,9 @@ public class ViewHandler {
       case "warehouseListView":
         root = loadWarehouseListView("/view/WarehouseListView.fxml");
         break;
+      case "orderView":
+        root = loadOrderView("/view/OrderView.fxml");
+        break;
     }
     currentScene.setRoot(root);
     primaryStage.setTitle("Warehouse management system");
@@ -48,6 +50,24 @@ public class ViewHandler {
     primaryStage.setWidth(root.getPrefWidth());
     primaryStage.setHeight(root.getPrefHeight());
     primaryStage.show();
+  }
+
+  private Region loadOrderView(String fxml) {
+    Region root;
+    if (orderVC == null) {
+      try {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(fxml));
+        root = loader.load();
+        orderVC = loader.getController();
+        orderVC.init(this,viewModelFactory.getOrderVM(),root);
+      }
+      catch(Exception e) {
+        e.printStackTrace();
+      }
+    }
+
+    return orderVC.getRoot();
   }
 
   private Region loadMainView(String fxml) {
@@ -82,9 +102,8 @@ public class ViewHandler {
       catch(Exception e) {
         e.printStackTrace();
       }
-    }else {
-      warehouseVC.refresh();
     }
+
     return warehouseVC.getRoot();
   }
 
@@ -122,8 +141,6 @@ public class ViewHandler {
       catch(Exception e) {
         e.printStackTrace();
       }
-    }else {
-      warehouseListVC.refresh();
     }
     return warehouseListVC.getRoot();
   }

@@ -1,11 +1,12 @@
 package viewmodel;
 
+import javafx.collections.ObservableList;
+import model.Product;
 import model.ProductModel;
 import model.WarehouseList;
 
 public class WarehouseViewModel {
   private ProductModel model;
-  private WarehouseList warehouseList;
 
   public WarehouseViewModel(ProductModel model){
     this.model = model;

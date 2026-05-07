@@ -42,8 +42,7 @@ public class WarehouseViewController {
     return root;
   }
 
-  public void refresh()
-  {
-    model.reload();
+  public void handleOrder(){
+    viewHandler.openView("orderView");
   }
 }
