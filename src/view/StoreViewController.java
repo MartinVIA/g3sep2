@@ -19,6 +19,7 @@ public class StoreViewController {
   @FXML private TableColumn<Product, Integer> quantity;
   @FXML private TableColumn<Product, Boolean> perishableness;
   @FXML private Button warehouseButton;
+  @FXML private Button backButton;
   private ViewHandler viewHandler;
   private Region root;
   private StoreViewModel model;
@@ -54,4 +55,9 @@ public class StoreViewController {
   public void handleWarehouseButton(){
     viewHandler.openView("warehouseListView");
   }
+
+  public void handleBackButton(){
+    viewHandler.openView("mainView");
+  }
+
 }

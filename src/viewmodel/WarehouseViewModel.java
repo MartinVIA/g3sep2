@@ -1,11 +1,9 @@
 package viewmodel;
 
 import model.ProductModel;
-import model.WarehouseList;
 
 public class WarehouseViewModel {
   private ProductModel model;
-  private WarehouseList warehouseList;
 
   public WarehouseViewModel(ProductModel model){
     this.model = model;
@@ -16,6 +14,6 @@ public class WarehouseViewModel {
 
   public void reload()
   {
-    warehouseList.getProductList();
+    model.getWarehouseList();
   }
 }

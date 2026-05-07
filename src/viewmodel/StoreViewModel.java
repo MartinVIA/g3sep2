@@ -1,11 +1,9 @@
 package viewmodel;
 
 import model.ProductModel;
-import model.StoreList;
 
 public class StoreViewModel {
   private ProductModel model;
-  private StoreList storeList;
 
   public StoreViewModel(ProductModel model){
     this.model = model;
@@ -16,6 +14,6 @@ public class StoreViewModel {
 
   public void reload()
   {
-    storeList.getProductList();
+    model.getStoreList();
   }
 }
