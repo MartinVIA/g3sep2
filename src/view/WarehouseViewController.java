@@ -44,10 +44,16 @@ public class WarehouseViewController {
   }
 
   public void handleOrder(){
+    if(productTable.getSelectionModel().getSelectedIndex() < 0)
+      return;
+    viewHandler.getViewModelFactory().getOrderVM().setProductIndex(productTable.getSelectionModel().getSelectedIndex());
     viewHandler.openView("orderView");
   }
 
   public void handleBackButton(){
     viewHandler.openView("mainView");
+  }
+  public void refresh(){
+   productTable.refresh();
   }
 }

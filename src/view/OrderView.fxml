@@ -16,7 +16,7 @@
                     <Insets />
                 </VBox.margin>
             </Label>
-            <TextField alignment="TOP_LEFT">
+            <TextField fx:id="stockField" alignment="TOP_LEFT">
                 <cursor>
                     <Cursor fx:constant="HAND" />
                 </cursor>
@@ -31,27 +31,27 @@
                     <Insets left="35.0" />
                 </padding>
             </Label>
-            <TextField editable="false" />
+            <TextField fx:id="nameField" editable="false" />
             <Label prefHeight="18.0" prefWidth="105.0" text="Description">
                 <padding>
                     <Insets left="20.0" />
                 </padding>
             </Label>
-            <TextField editable="false" />
+            <TextField fx:id="descriptionField" editable="false" />
             <Label prefHeight="18.0" prefWidth="102.0" text="Price">
                 <padding>
                     <Insets left="35.0" />
                 </padding>
             </Label>
-            <TextField editable="false" />
+            <TextField fx:id="priceField" editable="false" />
             <Label prefHeight="18.0" prefWidth="166.0" text="Perishableness">
                 <padding>
                     <Insets left="10.0" />
                 </padding>
             </Label>
-            <TextField editable="false" />
+            <TextField fx:id="perishableField" editable="false" />
             <Label alignment="CENTER" prefHeight="18.0" prefWidth="125.0" text="Current Quantity" />
-            <TextField editable="false" />
+            <TextField fx:id="quantityField" editable="false" />
         </VBox>
     </HBox>
     <HBox layoutX="97.0" layoutY="270.0" prefHeight="100.0" prefWidth="213.0">

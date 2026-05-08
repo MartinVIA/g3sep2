@@ -25,6 +25,9 @@ public class ViewHandler {
     this.primaryStage = primaryStage;
     openView("mainView");
   }
+  public ViewModelFactory getViewModelFactory(){
+    return viewModelFactory;
+  }
   public void openView(String id){
     Region root = null;
     switch(id) {
@@ -102,6 +105,8 @@ public class ViewHandler {
       catch(Exception e) {
         e.printStackTrace();
       }
+    }else{
+      warehouseVC.refresh();
     }
 
     return warehouseVC.getRoot();

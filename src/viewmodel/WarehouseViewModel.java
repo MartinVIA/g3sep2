@@ -14,8 +14,4 @@ public class WarehouseViewModel {
     return model;
   }
 
-  public void reload()
-  {
-    model.getWarehouseList();
-  }
 }
