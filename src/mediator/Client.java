@@ -25,9 +25,7 @@ public class Client {
   private final Gson gson = new Gson();
   private ViewHandler viewHandler;
 
-  public Client(String host, int port)  throws IOException
-  {
-    this.model = model;
+  public Client(String host, int port )  throws IOException {
     socket = new Socket(host, port);
     InputStream inputStream = socket.getInputStream();
     OutputStream outputStream = socket.getOutputStream();

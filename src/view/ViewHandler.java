@@ -112,8 +112,7 @@ public class ViewHandler {
     return warehouseVC.getRoot();
   }
 
-  private Region loadStoreView(String fxml)
-  {
+  private Region loadStoreView(String fxml) {
     Region root;
     if (storeVC == null) {
       try {
@@ -122,16 +121,14 @@ public class ViewHandler {
         root = loader.load();
         storeVC = loader.getController();
         storeVC.init(this,viewModelFactory.getStoreVM(),root);
-      }
-      catch(Exception e) {
+      } catch(Exception e) {
         e.printStackTrace();
       }
-    }else {
+    }else{
       storeVC.refresh();
     }
     return storeVC.getRoot();
   }
-
   private Region loadWarehouseListView(String fxml)
   {
     Region root;

@@ -15,10 +15,8 @@ public class Main extends Application
   System.out.println("heehee :3c");
   }
 
-  @Override public void start(Stage primaryStage) throws IOException
-  {
-    ProductModel model = new ModelManager();
-    Client client = new Client("localhost", 4026);
+  @Override public void start(Stage primaryStage) throws IOException {
+    // Client client = new Client("localhost", 4026);
     ViewHandler viewHandler = new ViewHandler();
     viewHandler.start(primaryStage);
   }

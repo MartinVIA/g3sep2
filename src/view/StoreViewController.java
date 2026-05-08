@@ -47,9 +47,8 @@ public class StoreViewController {
     //Leave it blank, it doesn't depend on any other injected data
   }
 
-  public void refresh()
-  {
-    model.reload();
+  public void refresh(){
+    productTable.refresh();
   }
 
   public void handleWarehouseButton(){

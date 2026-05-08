@@ -22,8 +22,7 @@ public class StoreViewModel {
     return model;
   }
 
-  public void reload()
-  {
+  public void reload() {
     products.setAll(model.getStoreList().getProductList());
   }
 }
