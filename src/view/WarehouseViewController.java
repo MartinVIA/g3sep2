@@ -32,7 +32,7 @@ public class WarehouseViewController {
     price.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getPrice()).asObject());
     quantity.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getQuantity()).asObject());
     perishableness.setCellValueFactory(cell -> new SimpleBooleanProperty(cell.getValue().isPerishable()));
-    productTable.setItems(model.getModel().getWarehouseList().getProductList());
+    productTable.setItems(model.getProducts());
   }
   @FXML
   public void initialize(){

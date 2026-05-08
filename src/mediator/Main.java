@@ -1,7 +1,9 @@
-package main;
+package mediator;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import model.ModelManager;
+import model.ProductModel;
 import view.ViewHandler;
 
 import java.io.IOException;
@@ -15,7 +17,9 @@ public class Main extends Application
 
   @Override public void start(Stage primaryStage) throws IOException
   {
+    ProductModel model = new ModelManager();
+    Client client = new Client("localhost", 4026);
     ViewHandler viewHandler = new ViewHandler();
-    viewHandler.start(new Stage());
+    viewHandler.start(primaryStage);
   }
 }

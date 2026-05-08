@@ -11,7 +11,7 @@ public class ViewModelFactory {
   private OrderViewModel orderVM;
 
   public ViewModelFactory(){
-    ModelManager model = new ModelManager();
+    ProductModel model = new ModelManager();
     storeVM = new StoreViewModel(model);
     warehouseListVM = new WarehouseListViewModel(model);
     warehouseVM = new WarehouseViewModel(model);

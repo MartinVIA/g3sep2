@@ -16,7 +16,7 @@ public class Product {
     this.description = description;
     this.price = price;
     this.quantity = quantity;
-    this.perishable = false;
+    this.perishable = perishable;
   }
 
   public String getName()
