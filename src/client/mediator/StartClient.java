@@ -6,7 +6,7 @@ import client.view.ViewHandler;
 
 import java.io.IOException;
 
-public class Main extends Application
+public class StartClient extends Application
 {
   public static void main(String[] args){
     launch(args);
@@ -14,7 +14,7 @@ public class Main extends Application
   }
 
   @Override public void start(Stage primaryStage) throws IOException {
-    // Client client = new Client("localhost", 4026);
+    Client client = new Client("localhost", 4026);
     ViewHandler viewHandler = new ViewHandler();
     viewHandler.start(primaryStage);
   }

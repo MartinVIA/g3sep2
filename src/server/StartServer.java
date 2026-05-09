@@ -26,7 +26,7 @@ public class StartServer {
       Thread thread = new Thread(handler);
       thread.setDaemon(true);
       thread.start();
-      System.out.println("Connection Established");
+      System.out.println("Connection Established "+socket.getRemoteSocketAddress());
     }
   }
 }

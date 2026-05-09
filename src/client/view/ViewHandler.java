@@ -32,19 +32,19 @@ public class ViewHandler {
     Region root = null;
     switch(id) {
       case "mainView":
-        root = loadMainView("/view/MainView.fxml");
+        root = loadMainView("/client/view/MainView.fxml");
         break;
       case "warehouseView":
-        root = loadWarehouseView("/view/WarehouseView.fxml");
+        root = loadWarehouseView("/client/view/WarehouseView.fxml");
         break;
       case "storeView":
-        root = loadStoreView("/view/StoreView.fxml");
+        root = loadStoreView("/client/view/StoreView.fxml");
         break;
       case "warehouseListView":
-        root = loadWarehouseListView("/view/WarehouseListView.fxml");
+        root = loadWarehouseListView("/client/view/WarehouseListView.fxml");
         break;
       case "orderView":
-        root = loadOrderView("/view/OrderView.fxml");
+        root = loadOrderView("/client/view/OrderView.fxml");
         break;
     }
     currentScene.setRoot(root);
@@ -82,8 +82,7 @@ public class ViewHandler {
         root = loader.load();
         mainVC = loader.getController();
         mainVC.init(this,viewModelFactory.getMainVM(),root);
-      }
-      catch(Exception e) {
+      } catch(Exception e) {
         e.printStackTrace();
       }
     }else {
