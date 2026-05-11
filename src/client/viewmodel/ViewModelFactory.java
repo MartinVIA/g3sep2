@@ -1,5 +1,6 @@
 package client.viewmodel;
 
+import client.mediator.Client;
 import client.model.ModelManager;
 import client.model.ProductModel;
 
@@ -10,8 +11,11 @@ public class ViewModelFactory {
   private WarehouseViewModel warehouseVM;
   private OrderViewModel orderVM;
 
-  public ViewModelFactory(){
+  public ViewModelFactory(Client client){
     ProductModel model = new ModelManager();
+    client.setModel(model);
+    client.notifyReady();
+    mainVM = new MainViewModel();
     storeVM = new StoreViewModel(model);
     warehouseListVM = new WarehouseListViewModel(model);
     warehouseVM = new WarehouseViewModel(model);

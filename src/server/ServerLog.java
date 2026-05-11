@@ -9,17 +9,17 @@ public class ServerLog {
     // newLog clears the file, starting from 0 at StartServer begining
 
     public void log(String filepath, String text)throws FileNotFoundException{
-        utils.MyFileHandler.appendToTextFile(filepath,text+" "+now());
+        client.utils.MyFileHandler.appendToTextFile(filepath,text+" "+now());
     }
     public void log(String text)throws FileNotFoundException{
-        utils.MyFileHandler.appendToTextFile("src/client/utils/server_log.txt",text+" "+now());
+        client.utils.MyFileHandler.appendToTextFile("src/client/utils/server_log.txt",text+" "+now());
     }
 
     public void newLog(String filepath, String text)throws FileNotFoundException{
-        utils.MyFileHandler.writeToTextFile(filepath,text+" "+now());
+        client.utils.MyFileHandler.writeToTextFile(filepath,text+" "+now());
     }
     public void newLog(String text)throws FileNotFoundException{
-        utils.MyFileHandler.writeToTextFile("src/client/utils/server_log.txt",text+" "+now());
+        client.utils.MyFileHandler.writeToTextFile("src/client/utils/server_log.txt",text+" "+now());
     }
 
     private String now(){

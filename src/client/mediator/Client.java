@@ -37,6 +37,10 @@ public class Client {
     thread.start();
   }
 
+  public void setModel(ProductModel model){
+    this.model = model;
+  }
+
   public void notifyReady(){
     writer.println("Ready!!");
   }
@@ -46,14 +50,6 @@ public class Client {
     ArrayList<Product> updatedList = gson.fromJson(s, listType);
     Platform.runLater(() -> model.getWarehouseList().getProductList().setAll(updatedList));
   }
-
- // public void addPropertyChangeListener(PropertyChangeListener listener) {
-   // support.addPropertyChangeListener(listener);
-  //}
-
-  //public void removePropertyChangeListener(PropertyChangeListener listener) {
-   // support.removePropertyChangeListener(listener);
-  //}
 
   public Socket getSocket()
   {
