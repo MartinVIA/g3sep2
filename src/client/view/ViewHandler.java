@@ -1,5 +1,6 @@
 package client.view;
 
+import client.mediator.Client;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
@@ -16,8 +17,8 @@ public class ViewHandler {
   private OrderViewController orderVC;
   private WarehouseListViewController warehouseListVC;
 
-  public ViewHandler(){
-    this.viewModelFactory = new ViewModelFactory();
+  public ViewHandler(Client client){
+    this.viewModelFactory = new ViewModelFactory(client);
     currentScene = new Scene(new Region());
   }
 

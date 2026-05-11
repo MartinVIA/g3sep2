@@ -15,7 +15,7 @@ public class StartClient extends Application
 
   @Override public void start(Stage primaryStage) throws IOException {
     Client client = new Client("localhost", 4026);
-    ViewHandler viewHandler = new ViewHandler();
+    ViewHandler viewHandler = new ViewHandler(client);
     viewHandler.start(primaryStage);
   }
 }
