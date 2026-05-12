@@ -9,7 +9,6 @@ public class Product {
   private int price;
   private int quantity;
   private boolean perishable;
-  private final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
   public Product ( String name, String description,int price, int quantity, boolean perishable){
     this.name = name;
