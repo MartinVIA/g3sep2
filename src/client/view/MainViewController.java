@@ -31,7 +31,6 @@ public class MainViewController {
 
   public void reset()
   {
-    //ts makes the back button in warehouseView not return to main client.view, as root cannot be null or sum bs like that
 
   }
 }

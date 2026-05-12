@@ -68,7 +68,7 @@ public class ViewHandler {
         break;
     }
     currentScene.setRoot(root);
-    primaryStage.setTitle("Warehouse management system");
+    primaryStage.setTitle("Big B.A.N.G Warehouse Management");
     primaryStage.setScene(currentScene);
     primaryStage.setWidth(root.getPrefWidth());
     primaryStage.setHeight(root.getPrefHeight());
