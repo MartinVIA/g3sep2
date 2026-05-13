@@ -41,7 +41,7 @@ public class StartServer {
           warehouseResult.getString("description"),
           warehouseResult.getInt("price"),
           warehouseResult.getInt("quantity"),
-          warehouseResult.getBoolean("isPerishable"));
+          warehouseResult.getBoolean("perishable"));
       warehouseMasterList.add(product);
     }
     logger.log("Warehouse MasterList created");
