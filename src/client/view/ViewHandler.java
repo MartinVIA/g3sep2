@@ -1,11 +1,19 @@
 package client.view;
 
 import client.mediator.Client;
+import client.model.Product;
+import client.model.ProductModel;
+import com.google.gson.reflect.TypeToken;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import client.viewmodel.ViewModelFactory;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ViewHandler {
   private Stage primaryStage;
@@ -16,10 +24,21 @@ public class ViewHandler {
   private StoreViewController storeVC;
   private OrderViewController orderVC;
   private WarehouseListViewController warehouseListVC;
+  private final Client client;
 
   public ViewHandler(Client client){
-    this.viewModelFactory = new ViewModelFactory(client);
+    this.viewModelFactory = new ViewModelFactory();
     currentScene = new Scene(new Region());
+    this.client = client;
+    this.client.addPropertyChangeListener(event -> {
+      if (event.getPropertyName().equals("update")) {
+        HashMap<String, ArrayList<Product>> allLists  = ( HashMap<String, ArrayList<Product>>) event.getNewValue();
+        Platform.runLater(() -> {
+          viewModelFactory.getWarehouseListVM().getModel().setAllLists(allLists);
+
+        });
+      }
+    });
   }
 
   public void start(Stage primaryStage) {

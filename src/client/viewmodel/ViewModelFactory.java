@@ -5,22 +5,21 @@ import client.model.ModelManager;
 import client.model.ProductModel;
 
 public class ViewModelFactory {
-  private MainViewModel mainVM;
-  private StoreViewModel storeVM;
-  private WarehouseListViewModel warehouseListVM;
-  private WarehouseViewModel warehouseVM;
-  private OrderViewModel orderVM;
+  private final MainViewModel mainVM;
+  private final StoreViewModel storeVM;
+  private final WarehouseListViewModel warehouseListVM;
+  private final WarehouseViewModel warehouseVM;
+  private final OrderViewModel orderVM;
 
-  public ViewModelFactory(Client client){
+  public ViewModelFactory(){
     ProductModel model = new ModelManager();
-    client.setModel(model);
-    client.notifyReady();
     mainVM = new MainViewModel();
     storeVM = new StoreViewModel(model);
     warehouseListVM = new WarehouseListViewModel(model);
     warehouseVM = new WarehouseViewModel(model);
     orderVM = new OrderViewModel(model);
   }
+
   public MainViewModel getMainVM() {
     return mainVM;
   }

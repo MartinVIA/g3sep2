@@ -17,5 +17,6 @@ public class StartClient extends Application
     Client client = new Client("localhost", 4026);
     ViewHandler viewHandler = new ViewHandler(client);
     viewHandler.start(primaryStage);
+    client.notifyReady();
   }
 }

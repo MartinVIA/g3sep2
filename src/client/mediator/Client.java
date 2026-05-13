@@ -7,18 +7,22 @@ import client.model.Product;
 import client.model.ProductModel;
 import client.view.ViewHandler;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Client {
 
   private final Socket socket;
-  private PrintWriter writer;
+  private final PrintWriter writer;
   private final BufferedReader reader;
   private final MessageReceiver receiver;
+  private final PropertyChangeSupport support;
   private ProductModel model;
   private final Gson gson = new Gson();
   private ViewHandler viewHandler;
@@ -27,11 +31,11 @@ public class Client {
     socket = new Socket(host, port);
     InputStream inputStream = socket.getInputStream();
     OutputStream outputStream = socket.getOutputStream();
-    InputStreamReader inputStreamReader = new InputStreamReader(inputStream,
-        StandardCharsets.UTF_8);
+    InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
     reader = new BufferedReader(inputStreamReader);
     writer = new PrintWriter(outputStream, true, StandardCharsets.UTF_8);
     receiver = new MessageReceiver(this, reader);
+    support = new PropertyChangeSupport(this);
     Thread thread = new Thread(receiver);
     thread.setDaemon(true);
     thread.start();
@@ -46,9 +50,9 @@ public class Client {
   }
 
   public void receiveBroadcast( String s ){
-    Type listType = new TypeToken<ArrayList<Product>>() {}.getType();
-    ArrayList<Product> updatedList = gson.fromJson(s, listType);
-    Platform.runLater(() -> model.getWarehouseList().getProductList().setAll(updatedList));
+    Type type = new TypeToken<HashMap<String, ArrayList<Product>>>(){}.getType();
+    HashMap<String, ArrayList<Product>> allLists = gson.fromJson(s, type);
+    support.firePropertyChange("update",null,allLists);
   }
 
   public Socket getSocket()
@@ -56,4 +60,7 @@ public class Client {
     return socket;
   }
 
+  public void addPropertyChangeListener(PropertyChangeListener listener) {
+    support.addPropertyChangeListener(listener);
+  }
 }

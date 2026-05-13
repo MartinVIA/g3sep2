@@ -3,6 +3,8 @@ package client.model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.ArrayList;
+
 public class WarehouseList implements ProductList {
 
   private ObservableList<Product> warehouseList;
@@ -14,6 +16,10 @@ public class WarehouseList implements ProductList {
   public void addProduct(String name, String description, int price, int quantity, boolean perishable) {
     warehouseList.add(new Product(name,description,price,quantity,perishable));
   }
+  public void setProductList(ArrayList<Product> productList){
+    warehouseList.setAll(productList);
+  }
+
   public void discardProduct(int index){
     warehouseList.remove(index);
   }
