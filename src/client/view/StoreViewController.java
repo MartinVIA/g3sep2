@@ -38,8 +38,7 @@ public class StoreViewController {
     price.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getPrice()).asObject());
     quantity.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getQuantity()).asObject());
     perishableness.setCellValueFactory(cell -> new SimpleBooleanProperty(cell.getValue().isPerishable()));
-    productTable.setItems(model.getProducts());
-
+    productTable.setItems(model.getNettoProducts());
   }
 
   @FXML
