@@ -15,10 +15,32 @@ public class StartServer {
     String password = "iddqd";
     String url = "jdbc:postgresql://localhost:5432/postgres";
     //TODO Put the queries in here buvi boy
-    String warehouseQuery = "";
-    String nettoQuery = "";
-    String remaQuery = "";
-    String bilkaQuery = "";
+    String warehouseQuery = """
+        SELECT name, description, price, isPerishable, warehouse.quantity
+        FROM product
+        LEFT JOIN warehouse ON product.product_id = warehouse.product_id
+        """;
+    String nettoQuery = """
+        SELECT product.name, product.description, product.price, product.isPerishable, quantity
+        FROM store_stock
+        JOIN product ON store_stock.product_id = product.product_id
+        JOIN store ON store_stock.store_id = store.store_id
+        WHERE store_name = 'Netto'
+        """;
+    String remaQuery = """
+        SELECT product.name, product.description, product.price, product.isPerishable, quantity
+        FROM store_stock
+        JOIN product ON store_stock.product_id = product.product_id
+        JOIN store ON store_stock.store_id = store.store_id
+        WHERE store_name = 'Rema'
+        """;
+    String bilkaQuery = """
+        SELECT product.name, product.description, product.price, product.isPerishable, quantity
+        FROM store_stock
+        JOIN product ON store_stock.product_id = product.product_id
+        JOIN store ON store_stock.store_id = store.store_id
+        WHERE store_name = 'Bilka'
+        """;
     final int PORT = 4026;
     ArrayList<Product> warehouseMasterList = new ArrayList<>();
     ArrayList<Product> nettoMasterList = new ArrayList<>();
