@@ -18,17 +18,20 @@ public class ClientHandler implements Runnable {
   private final BufferedReader input;
   private final PrintWriter output;
   private ArrayList<ClientHandler> handlerList;
-  private ArrayList<Product> masterList;
-  private ArrayList<Product> warehouseMasterList = new ArrayList<>();
-  private ArrayList<Product> nettoMasterList = new ArrayList<>();
-  private ArrayList<Product> remaMasterList = new ArrayList<>();
-  private ArrayList<Product> bilkaMasterList = new ArrayList<>();
+  private ArrayList<Product> warehouseMasterList;
+  private ArrayList<Product> nettoMasterList;
+  private ArrayList<Product> remaMasterList;
+  private ArrayList<Product> bilkaMasterList;
 
-  public ClientHandler(Socket socket, Gson gson, ArrayList<ClientHandler>handlerList, ArrayList<Product> masterList) throws IOException {
+  public ClientHandler(Socket socket, Gson gson, ArrayList<ClientHandler> handlerList, ArrayList<Product> warehouseMasterList, ArrayList<Product> nettoMasterList,
+      ArrayList<Product> remaMasterList, ArrayList<Product> bilkaMasterList) throws IOException {
     this.socket = socket;
     this.gson = gson;
     this.handlerList = handlerList;
-    this.masterList = masterList;
+    this.warehouseMasterList = warehouseMasterList;
+    this.nettoMasterList = nettoMasterList;
+    this.remaMasterList = remaMasterList;
+    this.bilkaMasterList = bilkaMasterList;
     OutputStream outputStream = socket.getOutputStream();
     this.output = new PrintWriter(outputStream,true, StandardCharsets.UTF_8);
     InputStream inputStream = socket.getInputStream();

@@ -11,7 +11,12 @@ public class ModelManager implements ProductModel {
   private ProductList remaList;
   private ProductList bilkaList;
   private ProductList warehouseList;
+
   public ModelManager(){
+    this.warehouseList = new WarehouseList();
+    this.remaList = new StoreList();
+    this.nettoList = new StoreList();
+    this.bilkaList = new StoreList();
   }
 
   public ObservableList<Product> getBilkaList() {

@@ -2,10 +2,8 @@ package client.mediator;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import javafx.application.Platform;
 import client.model.Product;
 import client.model.ProductModel;
-import client.view.ViewHandler;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -25,7 +23,6 @@ public class Client {
   private final PropertyChangeSupport support;
   private ProductModel model;
   private final Gson gson = new Gson();
-  private ViewHandler viewHandler;
 
   public Client(String host, int port )  throws IOException {
     socket = new Socket(host, port);
@@ -63,4 +60,11 @@ public class Client {
   public void addPropertyChangeListener(PropertyChangeListener listener) {
     support.addPropertyChangeListener(listener);
   }
+
+  public void sendUpdate(String type, ArrayList<Product> list){
+    HashMap<String, ArrayList<Product>> message = new HashMap<>();
+    message.put(type, list);
+    writer.println(gson.toJson(message));
+  }
+
 }

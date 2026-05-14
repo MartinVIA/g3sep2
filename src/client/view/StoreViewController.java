@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Region;
@@ -20,6 +21,7 @@ public class StoreViewController {
   @FXML private TableColumn<Product, Boolean> perishableness;
   @FXML private Button warehouseButton;
   @FXML private Button backButton;
+  @FXML private ComboBox<String> storeSelector;
   private ViewHandler viewHandler;
   private Region root;
   private StoreViewModel model;
@@ -38,7 +40,17 @@ public class StoreViewController {
     price.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getPrice()).asObject());
     quantity.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getQuantity()).asObject());
     perishableness.setCellValueFactory(cell -> new SimpleBooleanProperty(cell.getValue().isPerishable()));
+    storeSelector.getItems().addAll("Netto", "Rema", "Bilka");
+    storeSelector.setValue("Netto");
     productTable.setItems(model.getNettoProducts());
+
+    storeSelector.setOnAction( e -> {
+      switch ( storeSelector.getValue() ){
+        case "Netto": productTable.setItems(model.getNettoProducts()); break;
+        case "Rema": productTable.setItems(model.getRemaProducts()); break;
+        case "Bilka": productTable.setItems(model.getBilkaProducts()); break;
+      }
+    });
   }
 
   @FXML

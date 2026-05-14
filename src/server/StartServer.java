@@ -12,7 +12,7 @@ import java.sql.*;
 public class StartServer {
   public static void main(String[] args) throws IOException, Exception {
     String username = "postgres";
-    String password = "iddqd";
+    String password = "123456789";
     String url = "jdbc:postgresql://localhost:5432/postgres";
     //TODO Put the queries in here buvi boy
     String warehouseQuery = """
@@ -47,7 +47,7 @@ public class StartServer {
     ArrayList<Product> remaMasterList = new ArrayList<>();
     ArrayList<Product> bilkaMasterList = new ArrayList<>();
 
-    ServerLog logger=new ServerLog();
+    ServerLog logger = ServerLog.getInstance();
     ServerSocket serverSocket = new ServerSocket(PORT);
     Gson gson = new Gson();
 
@@ -108,11 +108,10 @@ public class StartServer {
     logger.newLog("Waiting for connection on " + serverSocket.getLocalPort());
 
     ArrayList<ClientHandler> handlerList = new ArrayList<>();
-    ArrayList<Product> masterList = new ArrayList<>();
     Socket socket;
 
     while((socket = serverSocket.accept()) != null) { // Wait for a connection
-      ClientHandler handler = new ClientHandler(socket,gson,handlerList, masterList);
+      ClientHandler handler = new ClientHandler(socket, gson, handlerList, warehouseMasterList, nettoMasterList, remaMasterList, bilkaMasterList);
       handlerList.add(handler);
       Thread thread = new Thread(handler);
       thread.setDaemon(true);

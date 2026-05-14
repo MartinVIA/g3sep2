@@ -11,13 +11,13 @@ public class ViewModelFactory {
   private final WarehouseViewModel warehouseVM;
   private final OrderViewModel orderVM;
 
-  public ViewModelFactory(){
+  public ViewModelFactory(Client client){
     ProductModel model = new ModelManager();
     mainVM = new MainViewModel();
     storeVM = new StoreViewModel(model);
     warehouseListVM = new WarehouseListViewModel(model);
     warehouseVM = new WarehouseViewModel(model);
-    orderVM = new OrderViewModel(model);
+    orderVM = new OrderViewModel(model, client);
   }
 
   public MainViewModel getMainVM() {

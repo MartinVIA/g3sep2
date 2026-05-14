@@ -27,7 +27,7 @@ public class ViewHandler {
   private final Client client;
 
   public ViewHandler(Client client){
-    this.viewModelFactory = new ViewModelFactory();
+    this.viewModelFactory = new ViewModelFactory(client);
     currentScene = new Scene(new Region());
     this.client = client;
     this.client.addPropertyChangeListener(event -> {

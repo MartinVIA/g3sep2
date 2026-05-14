@@ -1,7 +1,10 @@
 package client.viewmodel;
 
+import client.mediator.Client;
 import javafx.beans.property.*;
 import client.model.ProductModel;
+
+import java.util.ArrayList;
 
 public class OrderViewModel {
   private ProductModel model;
@@ -11,9 +14,11 @@ public class OrderViewModel {
   private StringProperty quantity = new SimpleStringProperty();
   private StringProperty perishable = new SimpleStringProperty();
   private int index;
+  private Client client;
 
-  public OrderViewModel(ProductModel model){
+  public OrderViewModel(ProductModel model, Client client){
     this.model = model;
+    this.client = client;
   }
   public ProductModel getModel() {
     return model;
@@ -45,5 +50,6 @@ public class OrderViewModel {
     int newStock = stock+model.getWarehouseList().getProduct(index).getQuantity();
     model.getWarehouseList().getProduct(index).setQuantity(newStock);
     System.out.println(model.getWarehouseList().getProduct(index).getQuantity());
+    client.sendUpdate("warehouse", new ArrayList<>(model.getWarehouseList().getProductList()));
   }
 }
