@@ -35,9 +35,13 @@ public class OrderViewController {
 
 
   }
+
   public void handleCancel() {
     stockField.clear();
-    viewHandler.openView("warehouseView");
+    if("warehouse".equals(model.getTargetStore()))
+      viewHandler.openView("warehouseView");
+    else
+      viewHandler.openView("warehouseListView");
   }
 
   public void handleConfirm() throws NumberFormatException {
@@ -45,7 +49,10 @@ public class OrderViewController {
       if(Integer.parseInt((stockField.getText())) > 0){
         model.orderStock(Integer.parseInt((stockField.getText())));
         stockField.clear();
-        viewHandler.openView("warehouseView");
+        if("warehouse".equals(model.getTargetStore()))
+          viewHandler.openView("warehouseView");
+        else
+          viewHandler.openView("warehouseListView");
       }
       else
         System.out.println("Order quantity invalid");
@@ -53,6 +60,9 @@ public class OrderViewController {
     catch (NumberFormatException e) {
       System.out.println("Order format invalid");
     }
+  }
 
+  public void reset(){
+    stockField.clear();
   }
 }

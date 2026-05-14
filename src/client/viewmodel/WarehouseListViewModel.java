@@ -17,6 +17,10 @@ public class WarehouseListViewModel {
       return products;
   }
 
+  public void orderFromWarehouse(){
+    //client.sendUpdate("warehouse", new ArrayList<>(model.getWarehouseList().getProductList()));
+  }
+
   public ProductModel getModel() {
     return model;
   }

@@ -2,18 +2,26 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.WarehouseListViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.WarehouseListViewController">
    <children>
-      <TableView fx:id="productTable" layoutX="25.0" layoutY="58.0" prefHeight="325.0" prefWidth="550.0">
+      <TableView fx:id="productTable" layoutX="25.0" layoutY="120.0" prefHeight="325.0" prefWidth="550.0">
         <columns>
           <TableColumn fx:id="name" prefWidth="135.0" text="Name" />
           <TableColumn fx:id="description" prefWidth="190.0" text="Description" />
             <TableColumn fx:id="price" prefWidth="75.0" text="Price" />
             <TableColumn fx:id="quantity" prefWidth="75.0" text="Quantity" />
-            <TableColumn fx:id="perishableness" prefWidth="73.60001220703123" text="Perishable" />
+            <TableColumn fx:id="perishableness" prefWidth="72.0" text="Perishable" />
         </columns>
       </TableView>
-      <Button fx:id="backButton" layoutX="49.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back" />
+      <Button fx:id="backButton" layoutX="495.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back" />
+      <ComboBox fx:id="storeSelector" layoutX="225.0" layoutY="80.0" prefWidth="150.0" />
+      <Button fx:id="orderButton" layoutX="46.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleOrderButton" text="Order" />
+      <Text fill="#179610" layoutX="139.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Store - Warehouse List View">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

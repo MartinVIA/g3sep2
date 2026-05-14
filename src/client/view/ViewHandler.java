@@ -88,7 +88,9 @@ public class ViewHandler {
         e.printStackTrace();
       }
     }
-
+    else {
+      orderVC.reset();
+    }
     return orderVC.getRoot();
   }
 
@@ -161,6 +163,9 @@ public class ViewHandler {
       catch(Exception e) {
         e.printStackTrace();
       }
+    }
+    else{
+      warehouseListVC.refresh();
     }
     return warehouseListVC.getRoot();
   }

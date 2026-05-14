@@ -44,9 +44,10 @@ public class WarehouseViewController {
   }
 
   public void handleOrder(){
-    if(productTable.getSelectionModel().getSelectedIndex() < 0)
-      return;
-    viewHandler.getViewModelFactory().getOrderVM().setProductIndex(productTable.getSelectionModel().getSelectedIndex());
+    Product selected = productTable.getSelectionModel().getSelectedItem();
+    if (selected == null) return;
+    viewHandler.getViewModelFactory().getOrderVM().setTargetStore("warehouse");
+    viewHandler.getViewModelFactory().getOrderVM().setSelectedProduct(selected);
     viewHandler.openView("orderView");
   }
 

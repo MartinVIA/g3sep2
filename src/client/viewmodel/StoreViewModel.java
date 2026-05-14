@@ -32,9 +32,7 @@ public class StoreViewModel {
   public ObservableList<Product> getBilkaProducts(){
     return bilkaProducts;
   }
-  public void orderFromWarehouse(){
-    //client.sendUpdate("warehouse", new ArrayList<>(model.getWarehouseList().getProductList()));
-  }
+
   public ProductModel getModel() {
     return model;
   }
