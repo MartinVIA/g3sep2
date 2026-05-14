@@ -17,16 +17,9 @@ public class WarehouseListViewModel {
       return products;
   }
 
-  public void orderFromWarehouse(){
-    //client.sendUpdate("warehouse", new ArrayList<>(model.getWarehouseList().getProductList()));
-  }
 
   public ProductModel getModel() {
     return model;
   }
 
-  public void reload()
-  {
-    products.setAll(model.getWarehouseList().getProductList());
-  }
 }

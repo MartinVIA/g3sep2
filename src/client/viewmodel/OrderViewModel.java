@@ -16,7 +16,6 @@ public class OrderViewModel
   private StringProperty price = new SimpleStringProperty();
   private StringProperty quantity = new SimpleStringProperty();
   private StringProperty perishable = new SimpleStringProperty();
-  private int index;
   private Client client;
   private String targetStore = "warehouse";
   private Product selectedProduct;
@@ -75,32 +74,6 @@ public class OrderViewModel
   public StringProperty getPerishableProperty()
   {
     return perishable;
-  }
-
-  public void setProductIndex(int index)
-  {
-    this.index = index;
-    Product product;
-    switch (targetStore)
-    {
-      case "netto":
-        product = model.getNettoList().get(index);
-        break;
-      case "rema":
-        product = model.getRemaList().get(index);
-        break;
-      case "bilka":
-        product = model.getBilkaList().get(index);
-        break;
-      default:
-        product = model.getWarehouseList().getProduct(index);
-        break;
-    }
-    name.set(product.getName());
-    description.set(product.getDescription());
-    price.set(String.valueOf(product.getPrice()));
-    quantity.set(String.valueOf(product.getQuantity()));
-    perishable.set(String.valueOf(product.isPerishable()));
   }
 
   public void orderStock(int stock)

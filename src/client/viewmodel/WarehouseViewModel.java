@@ -17,10 +17,6 @@ public class WarehouseViewModel {
     return products;
   }
 
-  public void reload(){
-    products.setAll(model.getWarehouseList().getProductList());
-  }
-
   public ProductModel getModel() {
     return model;
   }
