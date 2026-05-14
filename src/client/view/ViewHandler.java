@@ -35,7 +35,6 @@ public class ViewHandler {
         HashMap<String, ArrayList<Product>> allLists  = ( HashMap<String, ArrayList<Product>>) event.getNewValue();
         Platform.runLater(() -> {
           viewModelFactory.getWarehouseListVM().getModel().setAllLists(allLists);
-
         });
       }
     });

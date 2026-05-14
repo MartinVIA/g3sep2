@@ -14,7 +14,7 @@ public class ViewModelFactory {
   public ViewModelFactory(Client client){
     ProductModel model = new ModelManager();
     mainVM = new MainViewModel();
-    storeVM = new StoreViewModel(model);
+    storeVM = new StoreViewModel(model,client);
     warehouseListVM = new WarehouseListViewModel(model);
     warehouseVM = new WarehouseViewModel(model);
     orderVM = new OrderViewModel(model, client);

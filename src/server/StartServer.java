@@ -12,9 +12,9 @@ import java.sql.*;
 public class StartServer {
   public static void main(String[] args) throws IOException, Exception {
     String username = "postgres";
-    String password = "123456789";
+    String password = "";
     String url = "jdbc:postgresql://localhost:5432/postgres";
-    //TODO Put the queries in here buvi boy
+
     String warehouseQuery = """
         SELECT name, description, price, perishable, warehouse.quantity
         FROM product

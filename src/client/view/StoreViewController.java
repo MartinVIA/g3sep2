@@ -1,5 +1,6 @@
 package client.view;
 
+import client.mediator.Client;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -30,8 +31,7 @@ public class StoreViewController {
     return root;
   }
 
-  public void init(ViewHandler viewHandler, StoreViewModel model, Region root)
-  {
+  public void init(ViewHandler viewHandler, StoreViewModel model, Region root) {
     this.viewHandler = viewHandler;
     this.model = model;
     this.root = root;

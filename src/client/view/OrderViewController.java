@@ -43,9 +43,9 @@ public class OrderViewController {
   public void handleConfirm() throws NumberFormatException {
     try{
       if(Integer.parseInt((stockField.getText())) > 0){
-      model.orderStock(Integer.parseInt((stockField.getText())));
-      stockField.clear();
-      viewHandler.openView("warehouseView");
+        model.orderStock(Integer.parseInt((stockField.getText())));
+        stockField.clear();
+        viewHandler.openView("warehouseView");
       }
       else
         System.out.println("Order quantity invalid");
