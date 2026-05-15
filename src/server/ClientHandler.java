@@ -23,8 +23,8 @@ public class ClientHandler implements Runnable {
   private ArrayList<Product> remaMasterList;
   private ArrayList<Product> bilkaMasterList;
 
-  public ClientHandler(Socket socket, Gson gson, ArrayList<ClientHandler> handlerList, ArrayList<Product> warehouseMasterList, ArrayList<Product> nettoMasterList,
-      ArrayList<Product> remaMasterList, ArrayList<Product> bilkaMasterList) throws IOException {
+  public ClientHandler(Socket socket, Gson gson, ArrayList<ClientHandler> handlerList,
+      ArrayList<Product> warehouseMasterList, ArrayList<Product> nettoMasterList, ArrayList<Product> remaMasterList, ArrayList<Product> bilkaMasterList) throws IOException {
     this.socket = socket;
     this.gson = gson;
     this.handlerList = handlerList;
