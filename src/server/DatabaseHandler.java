@@ -46,9 +46,6 @@ public class DatabaseHandler {
     Connection con = DriverManager.getConnection(url, username, password);
     System.out.println("Connection Established successfully");
     this.statement = con.createStatement();
-  }
-  public ArrayList<Product> getWarehouseMasterList()
-      throws SQLException, FileNotFoundException {
     ResultSet warehouseResult = statement.executeQuery(warehouseQuery);
     while (warehouseResult.next()) {
       Product product = new Product(
@@ -60,10 +57,7 @@ public class DatabaseHandler {
       warehouseMasterList.add(product);
     }
     ServerLog.getInstance().log("Warehouse MasterList created");
-    return warehouseMasterList;
-  }
-  public ArrayList<Product> getNettoMasterList()
-      throws SQLException, FileNotFoundException {
+
     ResultSet nettoResult = statement.executeQuery(nettoQuery);
     while (nettoResult.next()) {
       Product product = new Product(
@@ -75,10 +69,7 @@ public class DatabaseHandler {
       nettoMasterList.add(product);
     }
     ServerLog.getInstance().log("Netto MasterList created");
-    return nettoMasterList;
-  }
-  public ArrayList<Product> getRemaMasterList()
-      throws SQLException, FileNotFoundException {
+
     ResultSet remaResult = statement.executeQuery(remaQuery);
     while (remaResult.next()) {
       Product product = new Product(
@@ -90,11 +81,7 @@ public class DatabaseHandler {
       remaMasterList.add(product);
     }
     ServerLog.getInstance().log("Rema MasterList created");
-    return remaMasterList;
-  }
 
-  public ArrayList<Product> getBilkaMasterList()
-      throws SQLException, FileNotFoundException {
     ResultSet bilkaResult = statement.executeQuery(bilkaQuery);
     while (bilkaResult.next()) {
       Product product = new Product(
@@ -107,6 +94,17 @@ public class DatabaseHandler {
     }
     ServerLog.getInstance().log("Bilka MasterList created");
 
+  }
+  public ArrayList<Product> getWarehouseMasterList() {
+    return warehouseMasterList;
+  }
+  public ArrayList<Product> getNettoMasterList() {
+    return nettoMasterList;
+  }
+  public ArrayList<Product> getRemaMasterList() {
+    return remaMasterList;
+  }
+  public ArrayList<Product> getBilkaMasterList() {
     return bilkaMasterList;
   }
 }
