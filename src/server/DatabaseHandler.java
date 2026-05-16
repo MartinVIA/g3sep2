@@ -45,6 +45,7 @@ public class DatabaseHandler {
     Class.forName("org.postgresql.Driver");
     Connection con = DriverManager.getConnection(url, username, password);
     System.out.println("Connection Established successfully");
+    ServerLog.getInstance().log("Connection Established successfully");
     this.statement = con.createStatement();
     ResultSet warehouseResult = statement.executeQuery(warehouseQuery);
     while (warehouseResult.next()) {
