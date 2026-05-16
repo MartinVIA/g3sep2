@@ -40,7 +40,7 @@ public class WarehouseListViewController {
     quantity.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getQuantity()).asObject());
     perishableness.setCellValueFactory(cell -> new SimpleBooleanProperty(cell.getValue().isPerishable()));
     productTable.setItems(model.getProducts());
-    storeSelector.getItems().addAll("Netto", "Rema", "Bilka");
+    storeSelector.getItems().addAll("Warehouse","Netto", "Rema", "Bilka");
 //    storeSelector.setValue("Netto");
   }
   @FXML
@@ -75,15 +75,12 @@ public class WarehouseListViewController {
     public void handleStoreChoice() {
       refresh();
     String selectedStore = storeSelector.getValue();
-    if(selectedStore=="Netto"){
-        productTable.setItems(model.getModel().getNettoList());
-    }else
-    if(selectedStore=="Bilka"){
-        productTable.setItems(model.getModel().getBilkaList());
-    }else
-    if(selectedStore=="Rema"){
-        productTable.setItems(model.getModel().getRemaList());
-    }
+        switch (selectedStore) {
+            case "Warehouse" -> productTable.setItems(model.getProducts());
+            case "Netto" -> productTable.setItems(model.getModel().getNettoList());
+            case "Bilka" -> productTable.setItems(model.getModel().getBilkaList());
+            case "Rema" -> productTable.setItems(model.getModel().getRemaList());
+        }
 
   };
 }
