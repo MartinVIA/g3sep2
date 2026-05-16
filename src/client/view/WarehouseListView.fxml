@@ -16,7 +16,7 @@
         </columns>
       </TableView>
       <Button fx:id="backButton" layoutX="495.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back" />
-      <ComboBox fx:id="storeSelector" layoutX="225.0" layoutY="80.0" prefWidth="150.0" />
+      <ComboBox fx:id="storeSelector" layoutX="225.0" layoutY="80.0" prefWidth="150.0" onAction="#handleStoreChoice" />
       <Button fx:id="orderButton" layoutX="46.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleOrderButton" text="Order" />
       <Text fill="#179610" layoutX="139.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Store - Warehouse List View">
          <font>

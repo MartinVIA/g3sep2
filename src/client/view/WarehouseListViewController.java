@@ -4,6 +4,7 @@ import client.viewmodel.ViewModelFactory;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -27,6 +28,7 @@ public class WarehouseListViewController {
   private ViewModelFactory viewModelFactory;
   private Region root;
   private WarehouseListViewModel model;
+
   public void init(ViewHandler viewHandler, WarehouseListViewModel model, Region root) {
     this.viewHandler = viewHandler;
     this.model = model;
@@ -39,7 +41,7 @@ public class WarehouseListViewController {
     perishableness.setCellValueFactory(cell -> new SimpleBooleanProperty(cell.getValue().isPerishable()));
     productTable.setItems(model.getProducts());
     storeSelector.getItems().addAll("Netto", "Rema", "Bilka");
-    storeSelector.setValue("Netto");
+//    storeSelector.setValue("Netto");
   }
   @FXML
   public void initialize(){
@@ -69,4 +71,19 @@ public class WarehouseListViewController {
     viewHandler.openView("orderView");
   }
 
+
+    public void handleStoreChoice() {
+      refresh();
+    String selectedStore = storeSelector.getValue();
+    if(selectedStore=="Netto"){
+        productTable.setItems(model.getModel().getNettoList());
+    }else
+    if(selectedStore=="Bilka"){
+        productTable.setItems(model.getModel().getBilkaList());
+    }else
+    if(selectedStore=="Rema"){
+        productTable.setItems(model.getModel().getRemaList());
+    }
+
+  };
 }
