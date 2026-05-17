@@ -18,18 +18,15 @@ public class Product {
     this.perishable = perishable;
   }
 
-  public String getName()
-  {
+  public String getName() {
     return name;
   }
 
-  public void setName(String name)
-  {
+  public void setName(String name) {
     this.name = name;
   }
 
-  public String getDescription()
-  {
+  public String getDescription() {
     return description;
   }
 
@@ -44,18 +41,15 @@ public class Product {
     this.price = price;
   }
 
-  public int getQuantity()
-  {
+  public int getQuantity() {
     return quantity;
   }
 
-  public void setQuantity(int quantity)
-  {
+  public void setQuantity(int quantity) {
     this.quantity = quantity;
   }
 
-  public boolean isPerishable()
-  {
+  public boolean isPerishable() {
     return perishable;
   }
 

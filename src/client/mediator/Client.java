@@ -21,7 +21,6 @@ public class Client {
   private final BufferedReader reader;
   private final MessageReceiver receiver;
   private final PropertyChangeSupport support;
-  private ProductModel model;
   private final Gson gson = new Gson();
 
   public Client(String host, int port )  throws IOException {
@@ -38,10 +37,6 @@ public class Client {
     thread.start();
   }
 
-  public void setModel(ProductModel model){
-    this.model = model;
-  }
-
   public void notifyReady(){
     writer.println("Ready!!");
   }
@@ -50,11 +45,6 @@ public class Client {
     Type type = new TypeToken<HashMap<String, ArrayList<Product>>>(){}.getType();
     HashMap<String, ArrayList<Product>> allLists = gson.fromJson(s, type);
     support.firePropertyChange("update",null,allLists);
-  }
-
-  public Socket getSocket()
-  {
-    return socket;
   }
 
   public void addPropertyChangeListener(PropertyChangeListener listener) {

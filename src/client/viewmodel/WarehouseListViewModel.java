@@ -12,12 +12,9 @@ public class WarehouseListViewModel {
     this.model = model;
     this.products = model.getWarehouseList().getProductList();
   }
-
   public ObservableList<Product> getProducts(){
       return products;
   }
-
-
   public ProductModel getModel() {
     return model;
   }

@@ -8,8 +8,7 @@ import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 
-public class OrderViewModel
-{
+public class OrderViewModel {
   private ProductModel model;
   private StringProperty name = new SimpleStringProperty();
   private StringProperty description = new SimpleStringProperty();
@@ -20,8 +19,7 @@ public class OrderViewModel
   private String targetStore = "warehouse";
   private Product selectedProduct;
 
-  public OrderViewModel(ProductModel model, Client client)
-  {
+  public OrderViewModel(ProductModel model, Client client) {
     this.model = model;
     this.client = client;
   }
@@ -36,8 +34,7 @@ public class OrderViewModel
     return targetStore;
   }
 
-  public void setSelectedProduct(Product product)
-  {
+  public void setSelectedProduct(Product product) {
     this.selectedProduct = product;
     name.set(product.getName());
     description.set(product.getDescription());
@@ -46,78 +43,63 @@ public class OrderViewModel
     perishable.set(String.valueOf(product.isPerishable()));
   }
 
-  public ProductModel getModel()
-  {
+  public ProductModel getModel() {
     return model;
   }
 
-  public StringProperty getNameProperty()
-  {
+  public StringProperty getNameProperty() {
     return name;
   }
 
-  public StringProperty getDescriptionProperty()
-  {
+  public StringProperty getDescriptionProperty() {
     return description;
   }
 
-  public StringProperty getPriceProperty()
-  {
+  public StringProperty getPriceProperty() {
     return price;
   }
 
-  public StringProperty getQuantityProperty()
-  {
+  public StringProperty getQuantityProperty() {
     return quantity;
   }
 
-  public StringProperty getPerishableProperty()
-  {
+  public StringProperty getPerishableProperty() {
     return perishable;
   }
 
-  public void orderStock(int stock)
-  {
-    switch (targetStore)
-    {
-      case "netto":
-      {
+  public void orderStock(int stock) {
+    switch (targetStore) {
+      case "netto": {
         ObservableList<Product> storelist = model.getNettoList();
         Product storeProduct = findMatchingProduct(new ArrayList<>(storelist), selectedProduct.getName());
-        if (storeProduct != null)
-        {
+        if (storeProduct != null) {
           storeProduct.setQuantity(storeProduct.getQuantity() + stock);
           client.sendUpdate("netto", new ArrayList<>(storelist));
           sendWarehouseQuantityDeduction(selectedProduct.getName(), stock);
         }
         break;
       }
-      case "rema":
-      {
+      case "rema": {
         ObservableList<Product> storelist = model.getRemaList();
         Product storeProduct = findMatchingProduct(new ArrayList<>(storelist), selectedProduct.getName());
-        if (storeProduct != null)
-        {
+        if (storeProduct != null) {
           storeProduct.setQuantity(storeProduct.getQuantity() + stock);
           client.sendUpdate("rema", new ArrayList<>(storelist));
           sendWarehouseQuantityDeduction(selectedProduct.getName(), stock);
         }
         break;
       }
-      case "bilka":
-      {
+      case "bilka": {
         ObservableList<Product> storelist = model.getBilkaList();
         Product storeProduct = findMatchingProduct(new ArrayList<>(storelist), selectedProduct.getName());
-        if (storeProduct != null)
-        {
+        if (storeProduct != null) {
           storeProduct.setQuantity(storeProduct.getQuantity() + stock);
           client.sendUpdate("bilka", new ArrayList<>(storelist));
           sendWarehouseQuantityDeduction(selectedProduct.getName(), stock);
         }
         break;
       }
-      default:
-      {
+      default: {
         int newStock = stock + selectedProduct.getQuantity();
         selectedProduct.setQuantity(newStock);
         client.sendUpdate("warehouse", new ArrayList<>(model.getWarehouseList().getProductList()));
@@ -126,23 +108,19 @@ public class OrderViewModel
     }
   }
 
-  private Product findMatchingProduct(ArrayList<Product> list, String name)
-  {
-    for (Product product : list)
-    {
+  private Product findMatchingProduct(ArrayList<Product> list, String name) {
+    for (Product product : list) {
       if (product.getName().equals(name))
         return product;
     }
     return null;
   }
 
-  private void sendWarehouseQuantityDeduction(String productName, int stock)
-  {
+  private void sendWarehouseQuantityDeduction(String productName, int stock) {
     ArrayList<Product> warehouseList = new ArrayList<>(
         model.getWarehouseList().getProductList());
     Product warehouseProduct = findMatchingProduct(warehouseList, productName);
-    if (warehouseProduct != null)
-    {
+    if (warehouseProduct != null) {
       warehouseProduct.setQuantity(warehouseProduct.getQuantity() - stock);
       client.sendUpdate("warehouse", warehouseList);
     }

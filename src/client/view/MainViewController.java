@@ -29,8 +29,7 @@ public class MainViewController {
     viewHandler.openView("storeView");
   }
 
-  public void reset()
-  {
-
+  public void reset() {
+    //Amazing method
   }
 }

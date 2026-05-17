@@ -31,9 +31,6 @@ public class StoreViewController {
   private Region root;
   private StoreViewModel model;
 
-  public Region getRoot(){
-    return root;
-  }
 
   public void init(ViewHandler viewHandler, StoreViewModel model, Region root) {
     this.viewHandler = viewHandler;
@@ -62,6 +59,9 @@ public class StoreViewController {
     //Leave it blank, it doesn't depend on any other injected data
   }
 
+  public Region getRoot(){
+    return root;
+  }
   public void refresh(){
     productTable.refresh();
   }

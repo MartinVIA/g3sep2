@@ -21,17 +21,17 @@ public class ServerLog {
 
 
     public void log(String filepath, String text)throws FileNotFoundException{
-        client.utils.MyFileHandler.appendToTextFile(filepath,text+" "+now());
+        MyFileHandler.appendToTextFile(filepath,text+" "+now());
     }
     public void log(String text)throws FileNotFoundException{
-        client.utils.MyFileHandler.appendToTextFile("src/server/server_log.txt",text+" "+now());
+        MyFileHandler.appendToTextFile("src/server/server_log.txt",text+" "+now());
     }
 
     public void newLog(String filepath, String text)throws FileNotFoundException{
-        client.utils.MyFileHandler.writeToTextFile(filepath,text+" "+now());
+        MyFileHandler.writeToTextFile(filepath,text+" "+now());
     }
     public void newLog(String text)throws FileNotFoundException{
-        client.utils.MyFileHandler.writeToTextFile("src/server/server_log.txt",text+" "+now());
+        MyFileHandler.writeToTextFile("src/server/server_log.txt",text+" "+now());
     }
 
     private String now(){
