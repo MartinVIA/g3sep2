@@ -25,7 +25,6 @@ public class WarehouseListViewController {
   @FXML private Button backButton;
   @FXML private Button orderButton;
   private ViewHandler viewHandler;
-  private ViewModelFactory viewModelFactory;
   private Region root;
   private WarehouseListViewModel model;
 
@@ -33,7 +32,6 @@ public class WarehouseListViewController {
     this.viewHandler = viewHandler;
     this.model = model;
     this.root = root;
-    this.viewModelFactory = viewHandler.getViewModelFactory();
     name.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getName()));
     description.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getDescription()));
     price.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getPrice()).asObject());
@@ -66,8 +64,8 @@ public class WarehouseListViewController {
       return;
     int index = productTable.getSelectionModel().getSelectedIndex();
     String store = storeSelector.getValue().toLowerCase();
-    viewModelFactory.getOrderVM().setSelectedProduct(selected);
-    viewModelFactory.getOrderVM().setTargetStore(store);
+    viewHandler.getViewModelFactory().getOrderVM().setSelectedProduct(selected);
+    viewHandler.getViewModelFactory().getOrderVM().setTargetStore(store);
     viewHandler.openView("orderView");
   }
 
