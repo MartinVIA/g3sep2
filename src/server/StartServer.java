@@ -12,7 +12,7 @@ import java.sql.*;
 public class StartServer {
   public static void main(String[] args) throws IOException, Exception {
     String username = "postgres";
-    String password = "123456789";
+    String password = "12345";
     String url = "jdbc:postgresql://localhost:5432/postgres";
     //TODO Put the queries in here buvi boy
     String warehouseQuery = """

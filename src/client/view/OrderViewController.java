@@ -46,8 +46,9 @@ public class OrderViewController {
 
   public void handleConfirm() throws NumberFormatException {
     try{
-      if(Integer.parseInt((stockField.getText())) > 0){
-        model.orderStock(Integer.parseInt((stockField.getText())));
+      int stock = Integer.parseInt(stockField.getText());
+      if( stock > 0){
+        model.orderStock(stock);
         stockField.clear();
         if("warehouse".equals(model.getTargetStore()))
           viewHandler.openView("warehouseView");

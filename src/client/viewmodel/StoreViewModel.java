@@ -37,4 +37,13 @@ public class StoreViewModel {
     return model;
   }
 
+  public void discardProduct(String store, Product product){
+    product.setQuantity(0);
+    switch (store){
+      case "netto": client.sendUpdate("netto", new ArrayList<>(nettoProducts)); break;
+      case "rema": client.sendUpdate("rema", new ArrayList<>(remaProducts)); break;
+      case "bilka": client.sendUpdate("bilka", new ArrayList<>(bilkaProducts)); break;
+    }
+  }
+
 }

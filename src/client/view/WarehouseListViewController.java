@@ -21,7 +21,6 @@ public class WarehouseListViewController {
   @FXML private TableColumn<Product, Integer> price;
   @FXML private TableColumn<Product, Integer> quantity;
   @FXML private TableColumn<Product, Boolean> perishableness;
-  @FXML private ComboBox<String> storeSelector;
   @FXML private Button backButton;
   @FXML private Button orderButton;
   private ViewHandler viewHandler;
@@ -38,7 +37,6 @@ public class WarehouseListViewController {
     quantity.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getQuantity()).asObject());
     perishableness.setCellValueFactory(cell -> new SimpleBooleanProperty(cell.getValue().isPerishable()));
     productTable.setItems(model.getProducts());
-    storeSelector.getItems().addAll("Warehouse","Netto", "Rema", "Bilka");
 //    storeSelector.setValue("Netto");
   }
   @FXML
@@ -62,23 +60,10 @@ public class WarehouseListViewController {
     Product selected = productTable.getSelectionModel().getSelectedItem();
     if (selected == null)
       return;
-    int index = productTable.getSelectionModel().getSelectedIndex();
-    String store = storeSelector.getValue().toLowerCase();
+    String store = viewHandler.getSelectedStore();
     viewHandler.getViewModelFactory().getOrderVM().setSelectedProduct(selected);
     viewHandler.getViewModelFactory().getOrderVM().setTargetStore(store);
     viewHandler.openView("orderView");
   }
 
-
-    public void handleStoreChoice() {
-      refresh();
-    String selectedStore = storeSelector.getValue();
-        switch (selectedStore) {
-            case "Warehouse" -> productTable.setItems(model.getProducts());
-            case "Netto" -> productTable.setItems(model.getModel().getNettoList());
-            case "Bilka" -> productTable.setItems(model.getModel().getBilkaList());
-            case "Rema" -> productTable.setItems(model.getModel().getRemaList());
-        }
-
-  };
 }

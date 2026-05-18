@@ -25,6 +25,7 @@ public class ViewHandler {
   private OrderViewController orderVC;
   private WarehouseListViewController warehouseListVC;
   private final Client client;
+  private String selectedStore = "netto";
 
   public ViewHandler(Client client){
     this.viewModelFactory = new ViewModelFactory(client);
@@ -169,5 +170,14 @@ public class ViewHandler {
     }
     return warehouseListVC.getRoot();
   }
+
+  public void setSelectedStore(String store){
+    this.selectedStore = store;
+  }
+
+  public String getSelectedStore(){
+    return selectedStore;
+  }
+
 
 }

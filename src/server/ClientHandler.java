@@ -56,17 +56,19 @@ public class ClientHandler implements Runnable {
         Type mapType = new TypeToken<HashMap<String, ArrayList<Product>>>(){}.getType();
         HashMap<String, ArrayList<Product>> incoming = gson.fromJson(message, mapType);
 
+        if (incoming == null || incoming.isEmpty()) continue;
         String type = incoming.keySet().iterator().next();
         ArrayList<Product> updatedList = incoming.get(type);
+        if (updatedList == null) continue;
 
-        if ("warehouse".equals(type)){ warehouseMasterList.clear();
-          warehouseMasterList.addAll(updatedList); }
-        else if ("netto".equals(type)){ nettoMasterList.clear();
-          nettoMasterList.addAll(updatedList); }
-        else if ("rema".equals(type)){ remaMasterList.clear();
-          remaMasterList.addAll(updatedList); }
-        else if ("bilka". equals(type)){ bilkaMasterList.clear();
-          bilkaMasterList.addAll(updatedList);}
+        if ("warehouse".equals(type)){ synchronized (warehouseMasterList) { warehouseMasterList.clear();
+          warehouseMasterList.addAll(updatedList); }}
+        else if ("netto".equals(type)){ synchronized (nettoMasterList) { nettoMasterList.clear();
+          nettoMasterList.addAll(updatedList); }}
+        else if ("rema".equals(type)){ synchronized (remaMasterList) { remaMasterList.clear();
+          remaMasterList.addAll(updatedList); }}
+        else if ("bilka".equals(type)){ synchronized (bilkaMasterList) { bilkaMasterList.clear();
+          bilkaMasterList.addAll(updatedList);}}
 
         HashMap<String, ArrayList<Product>> allLists = new HashMap<>();
         allLists.put("warehouse", warehouseMasterList);

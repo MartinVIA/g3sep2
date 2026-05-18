@@ -13,7 +13,7 @@ public class DatabaseHandler {
   private ArrayList<Product> bilkaMasterList = new ArrayList<>();
   private Statement statement;
   private final String username = "postgres";
-  private final String password = "iddqd";
+  private final String password = "12345";
   private final String url = "jdbc:postgresql://localhost:5432/postgres";
   private final String warehouseQuery = """
         SELECT name, description, price, perishable, warehouse.quantity

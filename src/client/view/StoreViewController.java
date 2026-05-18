@@ -67,6 +67,7 @@ public class StoreViewController {
   }
 
   public void handleWarehouseButton(){
+    viewHandler.setSelectedStore(storeSelector.getValue().toLowerCase());
     viewHandler.openView("warehouseListView");
   }
 
@@ -75,18 +76,14 @@ public class StoreViewController {
   }
 
     public void handleDiscardButton() {
-      Product selected=productTable.getSelectionModel().getSelectedItem();
-      if (selected==null){
+      Product selected = productTable.getSelectionModel().getSelectedItem();
+      if (selected == null){
           nonSelectedWarning.visibleProperty().set(true);
-      }
-      if (selected==null)
           return;
-        selected.setQuantity(0);
-        productTable.refresh();
-        nonSelectedWarning.visibleProperty().set(false);
-
-
-
+      }
+      model.discardProduct(storeSelector.getValue().toLowerCase(), selected);
+      productTable.refresh();
+      nonSelectedWarning.visibleProperty().set(false);
   }
 
 }
