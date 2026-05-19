@@ -13,29 +13,28 @@ public class DatabaseHandler {
   private ArrayList<Product> bilkaMasterList = new ArrayList<>();
   private Statement statement;
   private final String username = "postgres";
-  private final String password = "12345";
+  private final String password = "Buvan@DBS";
   private final String url = "jdbc:postgresql://localhost:5432/postgres";
   private final String warehouseQuery = """
-        SELECT name, description, price, perishable, warehouse.quantity
-        FROM product
-        LEFT JOIN warehouse ON product.product_id = warehouse.product_id
-        """;
+      SELECT name, description, price, quantity, perishable
+      FROM product;
+      """;
   private final String nettoQuery = """
-        SELECT product.name, product.description, product.price, product.perishable, quantity
+        SELECT product.name, product.description, product.price, product.perishable, store_quantity AS quantity
         FROM store_stock
         JOIN product ON store_stock.product_id = product.product_id
         JOIN store ON store_stock.store_id = store.store_id
         WHERE store_name = 'Netto'
         """;
   private final String remaQuery = """
-        SELECT product.name, product.description, product.price, product.perishable, quantity
+        SELECT product.name, product.description, product.price, product.perishable, store_quantity AS quantity
         FROM store_stock
         JOIN product ON store_stock.product_id = product.product_id
         JOIN store ON store_stock.store_id = store.store_id
         WHERE store_name = 'Rema'
         """;
   private final String bilkaQuery = """
-        SELECT product.name, product.description, product.price, product.perishable, quantity
+        SELECT product.name, product.description, product.price, product.perishable, store_quantity AS quantity
         FROM store_stock
         JOIN product ON store_stock.product_id = product.product_id
         JOIN store ON store_stock.store_id = store.store_id
