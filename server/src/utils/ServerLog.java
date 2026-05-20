@@ -1,4 +1,4 @@
-package mediator;
+package utils;
 
 import java.io.FileNotFoundException;
 import java.time.LocalTime;

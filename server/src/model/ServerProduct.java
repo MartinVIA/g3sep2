@@ -1,6 +1,6 @@
 package model;
 
-public class Product {
+public class ServerProduct {
 
   private String name;
   private String description;
@@ -8,7 +8,7 @@ public class Product {
   private int quantity;
   private boolean perishable;
 
-  public Product( String name, String description,int price, int quantity, boolean perishable){
+  public ServerProduct( String name, String description,int price, int quantity, boolean perishable){
     this.name = name;
     this.description = description;
     this.price = price;

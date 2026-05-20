@@ -10,17 +10,17 @@ public class Inventory {
   private Store rema;
   private Store bilka;
 
-  public Inventory(ArrayList<Product> warehouseList,
-      ArrayList<Product> nettoList,
-      ArrayList<Product> remaList,
-      ArrayList<Product> bilkaList){
+  public Inventory(ArrayList<ServerProduct> warehouseList,
+      ArrayList<ServerProduct> nettoList,
+      ArrayList<ServerProduct> remaList,
+      ArrayList<ServerProduct> bilkaList){
     this.warehouse = new Warehouse(warehouseList);
     this.netto = new Store("netto", nettoList);
     this.rema = new Store("rema", remaList);
     this.bilka = new Store("bilka", bilkaList);
   }
 
-  public synchronized void updateList(String type, ArrayList<Product> updatedList) {
+  public synchronized void updateList(String type, ArrayList<ServerProduct> updatedList) {
     switch (type) {
       case "warehouse" -> warehouse.setProductList(updatedList);
       case "netto"     -> netto.setProductList(updatedList);
@@ -29,8 +29,8 @@ public class Inventory {
     }
   }
 
-  public synchronized HashMap<String, ArrayList<Product>> getAllLists(){
-    HashMap<String, ArrayList<Product>> allLists = new HashMap<>();
+  public synchronized HashMap<String, ArrayList<ServerProduct>> getAllLists(){
+    HashMap<String, ArrayList<ServerProduct>> allLists = new HashMap<>();
     allLists.put("warehouse", warehouse.getProductList());
     allLists.put("netto", netto.getProductList());
     allLists.put("rema", rema.getProductList());
@@ -38,9 +38,9 @@ public class Inventory {
     return allLists;
   }
 
-  public ArrayList<Product> getWarehouseList(){ return warehouse.getProductList(); }
-  public ArrayList<Product> getNettoList(){ return netto.getProductList(); }
-  public ArrayList<Product> getRemaList(){ return rema.getProductList(); }
-  public ArrayList<Product> getBilkaList(){ return bilka.getProductList(); }
+  public ArrayList<ServerProduct> getWarehouseList(){ return warehouse.getProductList(); }
+  public ArrayList<ServerProduct> getNettoList(){ return netto.getProductList(); }
+  public ArrayList<ServerProduct> getRemaList(){ return rema.getProductList(); }
+  public ArrayList<ServerProduct> getBilkaList(){ return bilka.getProductList(); }
 
 }

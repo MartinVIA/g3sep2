@@ -1,8 +1,8 @@
 package dao;
 
 import java.util.ArrayList;
-import model.Product;
+import model.ServerProduct;
 public interface ProductDao {
-  ArrayList<Product> findAllProduct();
-  void save();
+  ArrayList<ServerProduct> findAllProducts();
+  void saveAllProducts(ArrayList<ServerProduct> serverProducts);
 }

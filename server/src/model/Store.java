@@ -5,25 +5,25 @@ import java.util.ArrayList;
 public class Store {
 
   private String name;
-  private ArrayList<Product> productList;
+  private ArrayList<ServerProduct> serverProductList;
 
-  public Store(String name, ArrayList<Product> productList) {
+  public Store(String name, ArrayList<ServerProduct> serverProductList) {
     this.name = name;
-    this.productList = productList;
+    this.serverProductList = serverProductList;
   }
 
   public String getName() {
     return name;
   }
 
-  public synchronized ArrayList<Product> getProductList() {
-    return productList;
+  public synchronized ArrayList<ServerProduct> getProductList() {
+    return serverProductList;
   }
 
-  public void setProductList(ArrayList<Product> productList) {
-    synchronized (this.productList) {
-      this.productList.clear();
-      this.productList.addAll(productList);
+  public void setProductList(ArrayList<ServerProduct> serverProductList) {
+    synchronized (this.serverProductList) {
+      this.serverProductList.clear();
+      this.serverProductList.addAll(serverProductList);
     }
   }
 

@@ -4,20 +4,20 @@ import java.util.ArrayList;
 
 public class Warehouse {
 
-  private ArrayList<Product> productList;
+  private ArrayList<ServerProduct> serverProductList;
 
-  public Warehouse(ArrayList<Product> productList) {
-    this.productList = productList;
+  public Warehouse(ArrayList<ServerProduct> serverProductList) {
+    this.serverProductList = serverProductList;
   }
 
-  public synchronized ArrayList<Product> getProductList() {
-    return productList;
+  public synchronized ArrayList<ServerProduct> getProductList() {
+    return serverProductList;
   }
 
-  public void setProductList(ArrayList<Product> productList) {
-    synchronized (this.productList) {
-      this.productList.clear();
-      this.productList.addAll(productList);
+  public void setProductList(ArrayList<ServerProduct> serverProductList) {
+    synchronized (this.serverProductList) {
+      this.serverProductList.clear();
+      this.serverProductList.addAll(serverProductList);
     }
   }
 

@@ -3,7 +3,8 @@ package mediator;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import model.Inventory;
-import model.Product;
+import model.ServerProduct;
+
 import java.util.List;
 import java.io.*;
 import java.lang.reflect.Type;
@@ -42,12 +43,12 @@ public class ClientHandler implements Runnable {
       }
       String message;
       while ((message = input.readLine()) != null) {
-        Type mapType = new TypeToken<HashMap<String, ArrayList<Product>>>(){}.getType();
-        HashMap<String, ArrayList<Product>> incoming = gson.fromJson(message, mapType);
+        Type mapType = new TypeToken<HashMap<String, ArrayList<ServerProduct>>>(){}.getType();
+        HashMap<String, ArrayList<ServerProduct>> incoming = gson.fromJson(message, mapType);
 
         if (incoming == null || incoming.isEmpty()) continue;
         String type = incoming.keySet().iterator().next();
-        ArrayList<Product> updatedList = incoming.get(type);
+        ArrayList<ServerProduct> updatedList = incoming.get(type);
         if (updatedList == null) continue;
 
         inventory.updateList(type, updatedList);
