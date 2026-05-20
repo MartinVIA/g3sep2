@@ -44,17 +44,20 @@ public class MyFileHandler {
      * @throws FileNotFoundException if the file cannot be created or opened
      */
     private static void writeText(String fileName, String str, boolean append) throws FileNotFoundException {
-        PrintWriter writeToFile = null;
-
-        try {
-            FileOutputStream fileOutStream = new FileOutputStream(fileName, append);
-            writeToFile = new PrintWriter(fileOutStream);
-            writeToFile.println(str);
-        } finally {
-            if (writeToFile != null) {
-                writeToFile.close();
-            }
+      PrintWriter writeToFile = null;
+      try {
+        File file = new File(fileName);
+        if (file.getParentFile() != null) {
+          file.getParentFile().mkdirs();
         }
+        FileOutputStream fileOutStream = new FileOutputStream(file, append);
+        writeToFile = new PrintWriter(fileOutStream);
+        writeToFile.println(str);
+      } finally {
+        if (writeToFile != null) {
+          writeToFile.close();
+        }
+      }
     }
 
 }

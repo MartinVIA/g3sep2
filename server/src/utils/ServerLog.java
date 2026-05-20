@@ -24,14 +24,14 @@ public class ServerLog {
         MyFileHandler.appendToTextFile(filepath,text+" "+now());
     }
     public void log(String text)throws FileNotFoundException{
-        MyFileHandler.appendToTextFile("src/server/server_log.txt",text+" "+now());
+      MyFileHandler.appendToTextFile("src/utils/server_log.txt", text+" "+now());
     }
 
     public void newLog(String filepath, String text)throws FileNotFoundException{
         MyFileHandler.writeToTextFile(filepath,text+" "+now());
     }
     public void newLog(String text)throws FileNotFoundException{
-        MyFileHandler.writeToTextFile("src/server/server_log.txt",text+" "+now());
+      MyFileHandler.writeToTextFile("src/utils/server_log.txt", text+" "+now());
     }
 
     private String now(){

@@ -10,17 +10,17 @@ import java.util.ArrayList;
 
 public class StoreDao implements ProductDao {
   private final String QUERY = """
-            SELECT serverProduct.name, serverProduct.description, serverProduct.price,
-                   serverProduct.perishable, store_quantity AS quantity
+            SELECT product.name, product.description, product.price,
+                   product.perishable, store_quantity AS quantity
             FROM store_stock
-            JOIN serverProduct ON store_stock.product_id = serverProduct.product_id
+            JOIN product ON store_stock.product_id = product.product_id
             JOIN store   ON store_stock.store_id   = store.store_id
             WHERE store_name = ?
             """;
   private final String UPDATE_QUERY = """
         UPDATE store_stock
         SET store_quantity = ?
-        WHERE product_id = (SELECT product_id FROM serverProduct WHERE name = ?)
+        WHERE product_id = (SELECT product_id FROM product WHERE name = ?)
           AND store_id   = (SELECT store_id   FROM store   WHERE store_name = ?)
         """;
   private final String storeName;

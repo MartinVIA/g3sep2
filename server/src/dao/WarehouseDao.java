@@ -12,10 +12,10 @@ import java.util.ArrayList;
 public class WarehouseDao implements ProductDao{
   private final String QUERY = """
       SELECT name, description, price, quantity, perishable
-      FROM serverProduct;
+      FROM product;
       """;
   private final String UPDATE_QUERY = """
-        UPDATE serverProduct
+        UPDATE Product
         SET quantity = ?
         WHERE name = ?
         """;
