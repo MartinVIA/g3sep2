@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 import viewmodel.OrderViewModel;
+import javafx.scene.text.Text;
 
 public class OrderViewController {
   @FXML private Button cancelButton;
@@ -15,6 +16,7 @@ public class OrderViewController {
   @FXML private TextField perishableField;
   @FXML private TextField quantityField;
   @FXML private TextField stockField;
+  @FXML private Text errorLabel;
   private ViewHandler viewHandler;
   private OrderViewModel model;
   private Region root;
@@ -32,12 +34,12 @@ public class OrderViewController {
     priceField.textProperty().bindBidirectional(model.getPriceProperty());
     perishableField.textProperty().bindBidirectional(model.getPerishableProperty());
     quantityField.textProperty().bindBidirectional(model.getQuantityProperty());
-
-
   }
 
   public void handleCancel() {
     stockField.clear();
+    errorLabel.setVisible(false);
+    errorLabel.setManaged(false);
     if("warehouse".equals(model.getTargetStore()))
       viewHandler.openView("warehouseView");
     else
@@ -45,25 +47,38 @@ public class OrderViewController {
   }
 
   public void handleConfirm() throws NumberFormatException {
-    try{
+    try {
       int stock = Integer.parseInt(stockField.getText());
-      if( stock > 0){
-        model.orderStock(stock);
-        stockField.clear();
-        if("warehouse".equals(model.getTargetStore()))
-          viewHandler.openView("warehouseView");
-        else
-          viewHandler.openView("warehouseListView");
+      if (stock <= 0) {
+        errorLabel.setText("Quantity must be greater than 0.");
+        errorLabel.setVisible(true);
+        errorLabel.setManaged(true);
+        return;
       }
+      if (!model.isStockValid(stock)) {
+        errorLabel.setText("Not enough stock available in warehouse.");
+        errorLabel.setVisible(true);
+        errorLabel.setManaged(true);
+        return;
+      }
+      errorLabel.setVisible(false);
+      model.orderStock(stock);
+      stockField.clear();
+      if ("warehouse".equals(model.getTargetStore()))
+        viewHandler.openView("warehouseView");
       else
-        System.out.println("Order quantity invalid");
+        viewHandler.openView("warehouseListView");
     }
     catch (NumberFormatException e) {
-      System.out.println("Order format invalid");
+      errorLabel.setText("Please enter a valid number.");
+      errorLabel.setVisible(true);
+      errorLabel.setManaged(true);
     }
   }
 
   public void reset(){
     stockField.clear();
+    errorLabel.setVisible(false);
+    errorLabel.setManaged(false);
   }
 }

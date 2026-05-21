@@ -67,4 +67,10 @@ public class OrderViewModel {
     model.orderStock(targetStore, selectedProductName, stock);
   }
 
+  public boolean isStockValid(int stock) {
+    if ("warehouse".equals(targetStore)) return true;
+    int available = Integer.parseInt(quantity.get());
+    return stock <= available;
+  }
+
 }

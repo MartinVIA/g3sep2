@@ -43,6 +43,7 @@ public class StoreViewController {
     productTable.setItems(model.getNettoProducts());
 
     storeSelector.setOnAction(e -> {
+      nonSelectedWarning.setVisible(false);
       switch (storeSelector.getValue()) {
         case "Netto": productTable.setItems(model.getNettoProducts()); break;
         case "Rema":  productTable.setItems(model.getRemaProducts());  break;
@@ -61,11 +62,13 @@ public class StoreViewController {
   public void refresh(){ productTable.refresh(); }
 
   public void handleWarehouseButton(){
+    nonSelectedWarning.setVisible(false);
     viewHandler.setSelectedStore(storeSelector.getValue().toLowerCase());
     viewHandler.openView("warehouseListView");
   }
 
   public void handleBackButton(){
+    nonSelectedWarning.setVisible(false);
     viewHandler.openView("mainView");
   }
 
