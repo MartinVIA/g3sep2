@@ -64,6 +64,8 @@ public class OrderViewModel {
   }
 
   public void orderStock(int stock) {
+    if (selectedProductName == null)
+      throw new IllegalStateException("No product selected");
     model.orderStock(targetStore, selectedProductName, stock);
   }
 

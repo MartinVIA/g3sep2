@@ -1,6 +1,7 @@
-import client.model.ModelManager;
-import client.model.ProductModel;
-import client.viewmodel.OrderViewModel;
+import model.ModelManager;
+import model.ProductModel;
+import org.junit.jupiter.api.Assertions;
+import viewmodel.OrderViewModel;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -12,8 +13,8 @@ public class OrderViewModelTest {
   @Test
   public void orderStockWithNoProduct(){
     ProductModel model = new ModelManager();
-    OrderViewModel viewModel = new OrderViewModel(model, null);
-    assertThrows(NullPointerException.class, () -> { viewModel.orderStock(5);});
+    OrderViewModel viewModel = new OrderViewModel(model);
+    assertThrows(IllegalStateException.class, () -> viewModel.orderStock(5));
   }
 
 }

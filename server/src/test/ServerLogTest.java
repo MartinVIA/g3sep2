@@ -1,5 +1,6 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import server.ServerLog;
+import utils.ServerLog;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
@@ -10,7 +11,7 @@ public class ServerLogTest {
   public void getInstanceTwiceReturnSameInstance(){
     ServerLog first = ServerLog.getInstance();
     ServerLog second = ServerLog.getInstance();
-    assertSame(first, second);
+    Assertions.assertSame(first, second);
   }
 
 

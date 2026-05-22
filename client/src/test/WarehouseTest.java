@@ -1,9 +1,9 @@
-import client.model.Product;
-import client.model.ProductList;
-import client.model.WarehouseList;
+import model.Product;
+import model.ProductList;
+import model.WarehouseList;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class WarehouseTest {
@@ -21,7 +21,7 @@ public class WarehouseTest {
   // Z - Zero : getProduct on an empty list
   @Test
   public void getProductEmptyList(){
-    assertThrows(IndexOutOfBoundsException.class, () -> { warehouseList.getProduct(0);});
+    Assertions.assertThrows(IndexOutOfBoundsException.class, () -> { warehouseList.getProduct(0);});
   }
 
   // O - One : Verify getters, when adding one product
@@ -50,7 +50,7 @@ public class WarehouseTest {
   public void getProductLastValidIndex(){
     warehouseList.addProduct("A", "ProdA", 5, 10, false);
     warehouseList.addProduct("B", "ProdB", 10, 20, true);
-    assertNotNull(warehouseList.getProduct(1));
+    Assertions.assertNotNull(warehouseList.getProduct(1));
   }
 
   // Invalid
@@ -58,7 +58,7 @@ public class WarehouseTest {
   public void getProductFirstInvalidIndex(){
     warehouseList.addProduct("A", "ProdA", 5, 10, false);
     warehouseList.addProduct("B", "ProdB", 10, 20, true);
-    assertEquals("C", warehouseList.getProduct(2));
+    Assertions.assertThrows(IndexOutOfBoundsException.class, () -> { warehouseList.getProduct(2);});
   }
 
   // I - Interface : ProductList Interface
