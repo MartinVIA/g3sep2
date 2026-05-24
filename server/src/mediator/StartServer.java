@@ -36,13 +36,11 @@ public class StartServer {
       nettoDao.saveAllProducts(inventory.getNettoList());
       remaDao.saveAllProducts(inventory.getRemaList());
       bilkaDao.saveAllProducts(inventory.getBilkaList());
-
       System.out.println("Database updated on shutdown.");
     }));
 
     System.out.println("Waiting for connection on " + serverSocket.getLocalPort());
     logger.newLog("Waiting for connection on " + serverSocket.getLocalPort());
-
 
     while((socket = serverSocket.accept()) != null) { // Wait for a connection
       ClientHandler handler = new ClientHandler(socket, gson, handlerList, inventory);
