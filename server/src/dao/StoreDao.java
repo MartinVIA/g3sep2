@@ -17,6 +17,7 @@ public class StoreDao implements ProductDao {
             JOIN store   ON store_stock.store_id   = store.store_id
             WHERE store_name = ?
             """;
+
   private final String UPDATE_QUERY = """
         UPDATE store_stock
         SET store_quantity = ?
@@ -39,7 +40,6 @@ public class StoreDao implements ProductDao {
         }
       }
       ServerLog.getInstance().log(storeName + " list loaded: " + serverProducts.size() + " serverProducts");
-
     }
     catch (SQLException | FileNotFoundException e) {
       throw new RuntimeException(e);
@@ -59,7 +59,6 @@ public class StoreDao implements ProductDao {
         stmt.executeBatch();
         conn.commit();
         ServerLog.getInstance().log(storeName + " DB updated on shutdown.");
-
       } catch (SQLException e) {
         conn.rollback();
         System.out.println("Failed to update " + storeName + " serverProducts, rolling back.");

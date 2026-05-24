@@ -39,7 +39,7 @@ public class ClientHandler implements Runnable {
       String ready = input.readLine();
       if("Ready!!".equals(ready)){
         output.println(gson.toJson(inventory.getAllLists()));
-        System.out.println("Masterlist sent to " + socket.getRemoteSocketAddress());
+        System.out.println("Inventory sent to " + socket.getRemoteSocketAddress());
       }
       String message;
       while ((message = input.readLine()) != null) {
